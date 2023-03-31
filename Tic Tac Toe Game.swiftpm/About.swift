@@ -101,7 +101,7 @@ struct About: View {
                 
                 .padding(10)
                 VStack {
-                    Text("Made with ❤️ by Max21910 in 🇫🇷For The Swift Chalenge 2023")
+                    Text( "V1.0 Made with ❤️ by Max21910 in 🇫🇷For The Swift Chalenge 2023")
                         .padding(10)
                   
                         Text("Frameworks use in this project :")
@@ -111,11 +111,11 @@ struct About: View {
                       
                 
                     
-                    Link(destination: URL(string: "https://github.com/max21910")!,
+                    Link(destination: URL(string: "https://github.com/simibac/ConfettiSwiftUI")!,
                          label: {
                         Label (
                             title: {
-                                Text("Fireworks animation")
+                                Text("confetti animation")
                                     .bold()
                             },
            
@@ -136,7 +136,7 @@ struct About: View {
                                         .foregroundColor(Color.white)
                         .cornerRadius(20)
                     })
-                    Link(destination: URL(string: "https://github.com/max21910")!,
+                    Link(destination: URL(string: "https://github.com/MAJKFL/Welcome-Sheet")!,
                          label: {
                         Label (
                             title: {
