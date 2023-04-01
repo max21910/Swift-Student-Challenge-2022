@@ -13,170 +13,70 @@ struct About: View {
             
             VStack {
                 Howtoplay()
-                
-                Link(destination: URL(string: "https://github.com/max21910")!,
-                     label: {
-                    Label (
-                        title: {
-                            Text("Github")
-                                .bold()
-                        },
-                        icon: {
-                            Image("GithubIcon")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                            
-                        }
-                        
-                    )
-                    .frame(width: 250,
-                           height: 50,
-                           alignment: .center)
-                    .background(Color.black)
-                    .frame(width: 251,
-                           height: 55,
-                           alignment: .center)
-                                    .foregroundColor(Color.white)
-                    .cornerRadius(20)
-                })
-                
-                
-                
-                
-                
-                Link(destination: URL(string: "https://www.instagram.com/max_dpj/")!,
-                     label: {
-                    Label (
-                        title: {
-                            Text("Intagram")
-                                .bold()
-                                .foregroundColor(Color.white)
-                        },
-                        icon: {
-                            Image("InstagramIcon")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .aspectRatio(contentMode: .fit)
-                            
-                            
-                            
-                        })
-                    .background(
-                        Image("Background")
-                            .resizable()
-                        
-                            .frame(width: 250, height:50,
-                                   alignment: .center)
-                            .background(Color.black)
-                            .foregroundColor(Color.white)
-                        
-                            .cornerRadius(20)
-                        
-                        
-                    )
-                    .padding()
-                })
-                
-                
-                Link(destination: URL(string: "https://twitter.com/max21160")!,
-                     label: {
-                    Label (
-                        title: {
-                            Text("Twitter")
-                                .bold()
-                        },
-                        icon: {
-                            Image("TwitterIcon")
-                                .resizable()
-                                .frame(width: 25, height: 20)
-                            
-                            
-                        })
-                    .frame(width: 250,
-                           height: 50,
-                           alignment: .center)
-                    
-                    .background(Color.blue)
-                    .foregroundColor(Color.white)
-                    .cornerRadius(20)
-                    
-                })
-                
-                .padding(10)
-                VStack {
-                    Text( "V1.0 Made with ❤️ by Max21910 in 🇫🇷For The Swift Chalenge 2023")
-                        .padding(10)
-                  
-                        Text("Frameworks use in this project :")
-                            .frame(alignment: .leading)
-                        
-                            .font(.title)
-                      
-                
-                    
-                    Link(destination: URL(string: "https://github.com/simibac/ConfettiSwiftUI")!,
-                         label: {
-                        Label (
-                            title: {
-                                Text("confetti animation")
-                                    .bold()
-                            },
-           
-                            icon: {
-                                Image("GithubIcon")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                            }
-                            
-                        )
-                        .frame(width: 250,
-                               height: 50,
-                               alignment: .center)
-                        .background(Color.black)
-                        .frame(width: 251,
-                               height: 55,
-                               alignment: .center)
-                                        .foregroundColor(Color.white)
-                        .cornerRadius(20)
-                    })
-                    Link(destination: URL(string: "https://github.com/MAJKFL/Welcome-Sheet")!,
-                         label: {
-                        Label (
-                            title: {
-                                Text("WelcomeSheet")
-                                    .bold()
-                            },
-           
-                            icon: {
-                                Image("GithubIcon")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                
-                            }
-                            
-                        )
-                        .frame(width: 250,
-                               height: 50,
-                               alignment: .center)
-                        .background(Color.black)
-                        .frame(width: 251,
-                               height: 55,
-                               alignment: .center)
-                                        .foregroundColor(Color.white)
-                        .cornerRadius(20)
-                    })
-                    
-                    
-                    
-                    
+                   ProductCard(logo: "GithubIcon", titleBox: "Welcome-Sheet", type: "Github",link: "https://github.com/max21910/Swift-Challenge2023",ButtonLabel: "link.circle.fill",imagebackground: "black")
+                    ProductCard(logo: "TwitterIcon", titleBox: "Welcome-Sheet", type: "Twitter ",link: "https://twitter.com/Max_dpj",ButtonLabel: "link.circle.fill",imagebackground: "blue")
+                    ProductCard(logo: "InstagramIcon", titleBox: "Welcome-Sheet", type: "Github Frameworks ",link: "https://instagram.com/Maxime_dpj",ButtonLabel: "link.circle.fill",imagebackground: "instagramBackground")
+                    ProductCard(logo: "GithubIcon", titleBox: "Welcome-Sheet", type: "Github Frameworks ",link: "https://github.com/MAJKFL/Welcome-Sheet",ButtonLabel: "link.circle.fill",imagebackground: "black")
+                    ProductCard(logo: "GithubIcon", titleBox: "ConfettiSwiftUI", type: "Github Frameworks ",link: "https://github.com/simibac/ConfettiSwiftUI",ButtonLabel: "link.circle.fill",imagebackground: "black")
                 }
-            }
             .navigationTitle("About")
+            }
+     
+           
         }
+      
+    
     }
+
+
+
+struct CardModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .cornerRadius(20)
+            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
+    }
+    
 }
 
-
+struct ProductCard: View {
+    
+    var logo: String
+    var titleBox: String
+    var type: String
+    var link: String
+    var ButtonLabel: String
+    var imagebackground: String
+  
+    
+    var body: some View {
+        HStack(alignment: .center) {
+            Image(logo)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 40)
+                .padding(.all, 20)
+            
+            VStack(alignment: .leading) {
+                Text(titleBox)
+                    .font(.system(size: 23, weight: .bold, design: .default))
+                    .foregroundColor(.white)
+                Text(type)
+                    .font(.system(size: 18, weight: .bold, design: .default))
+                    .foregroundColor(.gray)
+                Link(destination: URL(string: link)!, label: {
+                    Image(systemName: ButtonLabel)
+                })
+              
+            }.padding(.trailing, 20)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+        .background(Image(imagebackground))
+        .modifier(CardModifier())
+        .padding(.all, 6)
+    }
+}
 struct About_Previews: PreviewProvider {
     static var previews: some View {
         About()

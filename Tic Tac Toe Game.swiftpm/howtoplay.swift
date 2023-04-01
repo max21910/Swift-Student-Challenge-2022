@@ -10,11 +10,7 @@ import SwiftUI
 import WelcomeSheet
 
 struct Howtoplay: View {
-    @State private var showSheet = false
-    
-    
-    
-    
+    @State  var showSheet = false
     
     let pages = [
         WelcomeSheetPage(title: "Welcome to Tic tac toe Game", rows: [
@@ -25,7 +21,7 @@ struct Howtoplay: View {
             
             WelcomeSheetPageRow(image: Image("GithubIcon"),
                                 accentColor: Color.indigo,
-                                title: "Open Source", content: "Find this project on github.com/max21910"),
+                                title: "Open Source", content: "Find this project on https://github.com/max21910/Swift-Challenge2023"),
             
             WelcomeSheetPageRow(imageSystemName: "ipad.and.iphone",
                                 accentColor: Color.green,
@@ -62,16 +58,13 @@ struct Howtoplay: View {
            
         })
            
-        
-     
-      
-      
-        
-        .welcomeSheet(isPresented: $showSheet,
-                      onDismiss: { /* Run this code when sheet is dismissed */ },
-                      isSlideToDismissDisabled: false,
-                    
-                      pages: pages)
+.welcomeSheet(isPresented: $showSheet,
+                      onDismiss: {
+           print("Instruction card dismiss")
+    
+},
+                      isSlideToDismissDisabled: true,
+                    pages: pages)
 
     }
 }

@@ -20,7 +20,7 @@ struct NavBar: View {
                 }
           
                 
-            About()
+        About()
                 .tabItem {
                     Image(systemName: "info.circle")
                     Text("About")
