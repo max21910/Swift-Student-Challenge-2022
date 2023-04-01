@@ -8,13 +8,20 @@ import SwiftUI
 
 struct NavBar: View {
     var body: some View {
-        TabView {                //navbar
+        TabView {                
             ContentView()
                 .tabItem {
                     Image(systemName: "gamecontroller")
                         .resizable()
                         .frame(width: 100, height: 50)
                     Text("Play")
+                }
+       Settings()
+                .tabItem {
+                    Image(systemName: "gear.circle.fill")
+                        .resizable()
+                        .frame(width: 100, height: 50)
+                    Text(" Settings")
                 }
           
                 

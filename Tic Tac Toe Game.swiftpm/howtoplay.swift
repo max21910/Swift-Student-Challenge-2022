@@ -52,7 +52,7 @@ struct Howtoplay: View {
                 Image(systemName: "chart.bar.doc.horizontal.fill")
                     .frame(width: 10,height: 10)
                 Text("Instruction")
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color.black)
                     .bold()
                     .font(.callout)
                     .frame(width: 100,height: 60)

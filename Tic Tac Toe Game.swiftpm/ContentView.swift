@@ -1,9 +1,3 @@
-//
-//  ContentView.swift
-//  Tic Tac Toe Game
-//
-//  Created by Max  on 31/03/2023.
-//
 import SwiftUI
 import ConfettiSwiftUI
 import WelcomeSheet
@@ -239,3 +233,4 @@ enum Player: String {
     case o = "O"
     case none = ""
 }
+

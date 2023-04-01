@@ -10,12 +10,12 @@ struct About: View {
         
         NavigationView {
             ZStack{
-                Color.blue.ignoresSafeArea()
+              
                 VStack {
                     Howtoplay()
-                    ProductCard(logo: "GithubIcon", titleBox: "Welcome-Sheet", type: "Github",link: "https://github.com/max21910/Swift-Challenge2023",ButtonLabel: "link.circle.fill",imagebackground: "black")
-                    ProductCard(logo: "TwitterIcon", titleBox: "Welcome-Sheet", type: "Twitter ",link: "https://twitter.com/Max_dpj",ButtonLabel: "link.circle.fill",imagebackground: "blue")
-                    ProductCard(logo: "InstagramIcon", titleBox: "Welcome-Sheet", type: "Github Frameworks ",link: "https://instagram.com/Maxime_dpj",ButtonLabel: "link.circle.fill",imagebackground: "instagramBackground")
+                    ProductCard(logo: "GithubIcon", titleBox: "Github", type: "Github",link: "https://github.com/max21910/Swift-Challenge2023",ButtonLabel: "link.circle.fill",imagebackground: "black")
+                    ProductCard(logo: "TwitterIcon", titleBox: "Twitter", type: "Twitter ",link: "https://twitter.com/Max_dpj",ButtonLabel: "link.circle.fill",imagebackground: "blue")
+                    ProductCard(logo: "InstagramIcon", titleBox: "Instagram", type: "Github Frameworks ",link: "https://instagram.com/Maxime_dpj",ButtonLabel: "link.circle.fill",imagebackground: "instagramBackground")
                     ProductCard(logo: "GithubIcon", titleBox: "Welcome-Sheet", type: "Github Frameworks ",link: "https://github.com/MAJKFL/Welcome-Sheet",ButtonLabel: "link.circle.fill",imagebackground: "black")
                     ProductCard(logo: "GithubIcon", titleBox: "ConfettiSwiftUI", type: "Github Frameworks ",link: "https://github.com/simibac/ConfettiSwiftUI",ButtonLabel: "link.circle.fill",imagebackground: "black")
                 }
