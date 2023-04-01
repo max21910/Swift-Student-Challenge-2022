@@ -44,7 +44,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             
-            Color.white.ignoresSafeArea()
+            Color.blue.ignoresSafeArea()
             
             VStack(spacing: 20) {
                 // Display the current player
@@ -122,7 +122,7 @@ struct ContentView: View {
                     }
                 }
                 .padding(20)
-                .background(Color.blue.opacity(0.7))
+                .background(Color.white.opacity(0.7))
                 .cornerRadius(12)
                 
                 // Display the winner (if any) with animation

@@ -12,7 +12,7 @@ struct About: View {
             ZStack{
               
                 VStack {
-                    Howtoplay()
+                  
                     ProductCard(logo: "GithubIcon", titleBox: "Github", type: "Github",link: "https://github.com/max21910/Swift-Challenge2023",ButtonLabel: "link.circle.fill",imagebackground: "black")
                     ProductCard(logo: "TwitterIcon", titleBox: "Twitter", type: "Twitter ",link: "https://twitter.com/Max_dpj",ButtonLabel: "link.circle.fill",imagebackground: "blue")
                     ProductCard(logo: "InstagramIcon", titleBox: "Instagram", type: "Github Frameworks ",link: "https://instagram.com/Maxime_dpj",ButtonLabel: "link.circle.fill",imagebackground: "instagramBackground")
