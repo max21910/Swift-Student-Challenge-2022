@@ -15,7 +15,7 @@ struct Prelaunch: View {
     var body: some View {
         Group {
             if animationisfinish == true {
-   NavBar()
+          NavBar()
                 
             } else {
                 
@@ -29,7 +29,7 @@ struct Prelaunch: View {
                     
                     Image("bigIcon")
                         .resizable()
-                        .frame(width: 200, height: 200)
+                        .frame(width: 100, height: 100)
                         .rotation3DEffect(
                             .degrees(angle),
                             axis: (x: 0.0, y: 1.0, z: 0.0)

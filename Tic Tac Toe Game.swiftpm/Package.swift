@@ -16,7 +16,7 @@ let package = Package(
         .iOSApplication(
             name: "Tic Tac Toe Game",
             targets: ["AppModule"],
-            bundleIdentifier: "com.max21160.Tic Tac Toe Game",
+            bundleIdentifier: "com.max21160.Emojie-Speed-Games",
             teamIdentifier: "JBDCCGS2V3",
             displayVersion: "1.0",
             bundleVersion: "1",

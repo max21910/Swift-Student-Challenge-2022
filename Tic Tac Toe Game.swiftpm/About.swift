@@ -9,7 +9,10 @@ struct About: View {
     var body: some View {
         
         NavigationView {
+        
+            
             VStack {
+                Howtoplay()
                 
                 Link(destination: URL(string: "https://github.com/max21910")!,
                      label: {

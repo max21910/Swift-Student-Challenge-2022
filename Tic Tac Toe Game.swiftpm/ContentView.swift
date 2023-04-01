@@ -9,9 +9,11 @@ import WelcomeSheet
 
 struct ContentView: View {
    
+   
+    
     
     // Define a two-dimensional array to represent the board
-    @State private var board = Array(repeating: Array(repeating: Player.none, count: 3), count: 3)
+    @State private var board = Array(repeating: Array(repeating: Player.none, count: 5), count: 5)
     
     // Define a variable to keep track of the current player
     @State private var currentPlayer = Player.x
@@ -21,8 +23,9 @@ struct ContentView: View {
     
     @State private var counter: Int = 0
     
+    @State private var shouldAnimate = false
     
-    
+    @State private var  hideplayertour = false
     
     // Define a variable to keep track of whether all the cases are filled
     private var allCasesFilled: Bool {
@@ -43,17 +46,18 @@ struct ContentView: View {
     var body: some View {
         ZStack {
     
-                Color.blue.ignoresSafeArea()
+                Color.white.ignoresSafeArea()
                 
                 VStack(spacing: 20) {
                     // Display the current player
-                    
-                    Text("Player \(currentPlayer.rawValue)'s turn")
-                       
-                        .frame(width: 250, height:50)
-                        .foregroundColor(Color.green)
-                    
-                        .cornerRadius(20)
+                    if hideplayertour == false {
+                        Text("🎮 \(currentPlayer.rawValue)'s turn")
+                        
+                            .frame(width: 250, height:50)
+                            .foregroundColor(Color.green)
+                        
+                            .cornerRadius(20)
+                    }
                     
                     
                     // Display the board
@@ -78,9 +82,8 @@ struct ContentView: View {
                                         if let newWinner = checkForWinner() {
                                             winner = newWinner
                                             print("winner game")
-                             
-                                            
-                                            counter += 1
+                                            hideplayertour = true//hide palyer tour text
+                                            counter += 1 //display the confetti animation
                                         }else {
                                             // Switch to the other player
                                             currentPlayer = currentPlayer == .x ? .o : .x
@@ -89,6 +92,7 @@ struct ContentView: View {
                                         // Check if all cases are filled
                                         if allCasesFilled  && winner == nil {
                                             showAlert = true
+                                            hideplayertour = true
                                         }
                                         
                                         
@@ -96,8 +100,9 @@ struct ContentView: View {
                                     }) {
                                         // Display the space with animation
                                         Rectangle()
-                                            .foregroundColor(.white)
+                                            .foregroundColor(.white)//foreground color of the palyer
                                             .frame(width: 80, height: 80)
+                                            .cornerRadius(10)
                                             .overlay(
                                                 Text(board[row][column].rawValue)
                                                     .font(.system(size: 48))
@@ -112,16 +117,21 @@ struct ContentView: View {
                     }
                     .padding(20)
                     .background(Color.black.opacity(0.7))
-                    .cornerRadius(10)
+                    .cornerRadius(12)
                     
                     // Display the winner (if any) with animation
                     if let winner = winner {
-                        Text("Player \(winner.rawValue) wins!")
+                        
+                        Text("Player \(winner.rawValue) wins! 👑")
                             .foregroundColor(.yellow)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .padding()
-                            .transition(.scale)
+                                        .font(.largeTitle)
+                                        .opacity(shouldAnimate ? 1 : 0)
+                                        .scaleEffect(shouldAnimate ? 1.2 : 0.5)
+                                        
+                                        .onAppear {
+                                            self.shouldAnimate = true
+                                        }
+                      
                         
                     }
                     
@@ -133,6 +143,8 @@ struct ContentView: View {
                             winner = nil
                             currentPlayer = .x
                             showAlert = false
+                            hideplayertour=false
+                            self.shouldAnimate = false
                             
                         }
                     }) {
@@ -147,6 +159,8 @@ struct ContentView: View {
                     }
                     .transition(.opacity)
                 }
+            
+            
        
                 .alert("Game Over (Tie)", isPresented: $showAlert) {
                     Button("Restart Game", role: .cancel) {
@@ -155,6 +169,7 @@ struct ContentView: View {
                             board = Array(repeating: Array(repeating: Player.none, count: 3), count: 3)
                             winner = nil
                             currentPlayer = .x
+                            hideplayertour = false
                             
                         }
                     }

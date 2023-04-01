@@ -10,21 +10,21 @@ import SwiftUI
 
 struct NavBar: View {
     var body: some View {
-       
-        TabView {
+        TabView {                //navbar
             ContentView()
                 .tabItem {
-            Image(systemName: "gamecontroller")
+                    Image(systemName: "gamecontroller")
                         .resizable()
                         .frame(width: 100, height: 50)
                     Text("Play")
                 }
-           
+          
+                
             About()
                 .tabItem {
-            Image(systemName: "info.circle")
+                    Image(systemName: "info.circle")
                     Text("About")
-            }
+                }
         }
     }
 }
