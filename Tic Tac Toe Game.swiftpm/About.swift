@@ -9,26 +9,26 @@ struct About: View {
     var body: some View {
         
         NavigationView {
-        
-            
-            VStack {
-                Howtoplay()
-                   ProductCard(logo: "GithubIcon", titleBox: "Welcome-Sheet", type: "Github",link: "https://github.com/max21910/Swift-Challenge2023",ButtonLabel: "link.circle.fill",imagebackground: "black")
+            ZStack{
+                Color.blue.ignoresSafeArea()
+                VStack {
+                    Howtoplay()
+                    ProductCard(logo: "GithubIcon", titleBox: "Welcome-Sheet", type: "Github",link: "https://github.com/max21910/Swift-Challenge2023",ButtonLabel: "link.circle.fill",imagebackground: "black")
                     ProductCard(logo: "TwitterIcon", titleBox: "Welcome-Sheet", type: "Twitter ",link: "https://twitter.com/Max_dpj",ButtonLabel: "link.circle.fill",imagebackground: "blue")
                     ProductCard(logo: "InstagramIcon", titleBox: "Welcome-Sheet", type: "Github Frameworks ",link: "https://instagram.com/Maxime_dpj",ButtonLabel: "link.circle.fill",imagebackground: "instagramBackground")
                     ProductCard(logo: "GithubIcon", titleBox: "Welcome-Sheet", type: "Github Frameworks ",link: "https://github.com/MAJKFL/Welcome-Sheet",ButtonLabel: "link.circle.fill",imagebackground: "black")
                     ProductCard(logo: "GithubIcon", titleBox: "ConfettiSwiftUI", type: "Github Frameworks ",link: "https://github.com/simibac/ConfettiSwiftUI",ButtonLabel: "link.circle.fill",imagebackground: "black")
                 }
-            .navigationTitle("About")
+                .navigationTitle("About")
             }
-     
-           
+            
+            
         }
-      
-    
+        
+        
     }
-
-
+    
+}
 
 struct CardModifier: ViewModifier {
     func body(content: Content) -> some View {
@@ -47,7 +47,7 @@ struct ProductCard: View {
     var link: String
     var ButtonLabel: String
     var imagebackground: String
-  
+    
     
     var body: some View {
         HStack(alignment: .center) {
@@ -67,7 +67,7 @@ struct ProductCard: View {
                 Link(destination: URL(string: link)!, label: {
                     Image(systemName: ButtonLabel)
                 })
-              
+                
             }.padding(.trailing, 20)
             Spacer()
         }

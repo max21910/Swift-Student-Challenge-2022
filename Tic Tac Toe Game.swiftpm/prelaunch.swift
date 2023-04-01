@@ -3,7 +3,8 @@ prelaunch.swift
 Emojie Speed Games
 Created by Max  on 31/03/2023.
 find this project on Github at :
-*/
+ https://github.com/max21910/LaunchScreen-iOS
+ */
 import SwiftUI
 
 struct Prelaunch: View {

@@ -4,8 +4,6 @@
 //
 //  Created by Max  on 31/03/2023.
 //
-
-
 import SwiftUI
 import WelcomeSheet
 
@@ -53,7 +51,12 @@ struct Howtoplay: View {
             HStack {
                 Image(systemName: "chart.bar.doc.horizontal.fill")
                     .frame(width: 10,height: 10)
-                Text("See instruction")
+                Text("Instruction")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.callout)
+                    .frame(width: 100,height: 60)
+                
             }
            
         })
