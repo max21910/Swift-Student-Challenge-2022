@@ -9,8 +9,8 @@ A simple Tic Tac Toe Game made with 100% Swift UI
 #Frameworks use in this project :
 
 
-Welcome-Sheet: https://github.com/MAJKFL/Welcome-Sheet
-ConfettiSwiftUI: https://github.com/simibac/ConfettiSwiftUI
+Welcome-Sheet: https://github.com/MAJKFL/Welcome-Sheet. 
+ConfettiSwiftUI: https://github.com/simibac/ConfettiSwiftUI. 
 
 
 # Support :
