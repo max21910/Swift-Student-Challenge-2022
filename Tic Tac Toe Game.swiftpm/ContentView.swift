@@ -187,7 +187,7 @@ struct ContentView: View {
                 }
                 
             }
-            .confettiCannon(counter: $counter, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
+        .confettiCannon(counter: $counter, num: 100, rainHeight: 1000, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
         }
         
         // Function to check for a winner
