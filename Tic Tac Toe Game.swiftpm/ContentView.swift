@@ -43,11 +43,13 @@ struct ContentView: View {
                         .cornerRadius(20)
                     HStack{
                         Image(systemName: "timer")
-                            .frame(width: 10, height:50)
-                        Text(String(format: "%.1f", stopWatchManager.secondsElapsed))
-                            .frame(width: 50, height:50)
                             .foregroundColor(.yellow)
-                            .cornerRadius(20)
+                            .frame(width: 30, height:70)
+                        Text(String(format: "%.1f", stopWatchManager.secondsElapsed))
+                            .foregroundColor(.yellow)
+                            .font(.title)
+                           
+                          
                         
                     }
                 }
@@ -95,8 +97,9 @@ struct ContentView: View {
                                         
                                         // Check if all cases are filled
                                         if allCasesFilled  && winner == nil {
-                                            showAlert = true //show Tie alert
-                                            self.stopWatchManager.stop()//stop chrono
+                                            showAlert = true  //show Tie alert
+                                            ShowPlay = true //stop game update
+                                            
                                         }
                                         
                                         
@@ -187,6 +190,7 @@ struct ContentView: View {
                         winner = nil
                         currentPlayer = .x
                         ShowPlay = true
+                        self.stopWatchManager.stop()
                         
                     }
                 }
