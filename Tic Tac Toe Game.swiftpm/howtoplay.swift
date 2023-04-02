@@ -11,11 +11,11 @@ struct Howtoplay: View {
     @State  var showSheet = false
     
     let pages = [
-        WelcomeSheetPage(title: "Welcome to Tic tac toe Game", rows: [
+        WelcomeSheetPage(title: "Welcome to Tic tac toe ", rows: [
             WelcomeSheetPageRow(imageSystemName:"person.2.circle.fill",
                                 accentColor: Color.mint,
-                                title: "Created by Max21910",
-                                content: "For the swift Challenge 2023"),
+                                title: "Made by Max21910",
+                                content: "For the swift Challenge 2023  Made with ❤️ in 🇫🇷"),
             
             WelcomeSheetPageRow(image: Image("GithubIcon"),
                                 accentColor: Color.indigo,
@@ -23,11 +23,11 @@ struct Howtoplay: View {
             
             WelcomeSheetPageRow(imageSystemName: "ipad.and.iphone",
                                 accentColor: Color.green,
-                                title: "compatible to all platforms.",
-                                content: "Written with 100% of Swift UI")
-        ], accentColor: Color.purple, optionalButtonTitle: "Find this project in github", optionalButtonURL: URL(string: "https://github.com/max21910")),
+                                title: "compatible to all Apple platforms.",
+                                content: "Written  100% Swift UI")
+        ], accentColor: Color.purple, optionalButtonTitle: "Find this project in github", optionalButtonURL: URL(string: "https://github.com/max21910/Swift-Challenge2023")),
         
-        WelcomeSheetPage(title: "Instruction", rows: [
+        WelcomeSheetPage(title: "How to play ?", rows: [
             WelcomeSheetPageRow(imageSystemName: "01.circle",
                                 title: "",
                                 content: "To play, simply tap on an empty square to place your mark. The game will automatically switch between X's and O's until a winner is declared or the game ends in a tie"),

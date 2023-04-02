@@ -16,13 +16,7 @@ struct NavBar: View {
                         .frame(width: 100, height: 50)
                     Text("Play")
                 }
-       Settings()
-                .tabItem {
-                    Image(systemName: "gear.circle.fill")
-                        .resizable()
-                        .frame(width: 100, height: 50)
-                    Text(" Settings")
-                }
+       
           
                 
         About()
