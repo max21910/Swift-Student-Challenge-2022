@@ -179,6 +179,7 @@ struct ContentView: View {
                     
                     .padding(100)
                 }
+                Howtoplay()
             }
             
             
