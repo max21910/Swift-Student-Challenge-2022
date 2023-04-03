@@ -92,6 +92,21 @@ struct ShopView: View {
                         }
                         
                     }
+                    Button {//reset shop
+                        orange = false
+                        red = false
+                        moneyanim = false
+                        
+                    } label: {
+                        Text("reset shop")
+                    }
+                    Button {//add coin
+                        
+                    coins = coins + 1000
+                    } label: {
+                        Text("add coin")
+                    }
+
                    
                 }
                        
