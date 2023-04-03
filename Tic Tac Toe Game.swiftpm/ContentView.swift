@@ -96,14 +96,13 @@ struct ContentView: View {
                     
                     Spacer()
                     HStack {
-                        
-                        Image("coinimage")
+                        Image(systemName: "dollarsign.circle.fill")
                             .resizable()
-                            .frame(width: 50,height: 30)
-                        Text(String(Coins))
-                            .foregroundColor(Color.yellow)
-                                            .font(.system(size: 20))
-                                            .animation(.easeInOut(duration: 0.5))
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.yellow)
+                        Text("\(Coins)")
+                            .font(.headline)
+                            .foregroundColor(.yellow)
                     }
                     
                     // Display the board

@@ -8,7 +8,7 @@ struct Item: Identifiable {
 
 
 struct ShopView: View {
-    @AppStorage("Coins1") var coins: Int = 1000
+    @AppStorage("Coins1") var Coins: Int = 1000
     @AppStorage("🖤 Background ") var black = false
     @AppStorage("❤️ Background") var red = false
     @AppStorage("blueon") var blueon = false
@@ -36,7 +36,7 @@ let items = [
                         .resizable()
                         .frame(width: 30, height: 30)
                         .foregroundColor(.yellow)
-                    Text("\(coins)")
+                    Text("\(Coins)")
                         .font(.headline)
                         .foregroundColor(.yellow)
                 }
@@ -51,9 +51,9 @@ let items = [
                             Text("\(item.price) Coins")
                                 .foregroundColor(.yellow)
                             Button(action: {
-                                if item.price <= coins {
+                                if item.price <= Coins {
                                     withAnimation {
-                                        coins -= item.price
+                                        Coins -= item.price
                                         markItemAsPurchased(item)
                                     }
                                 } else {
@@ -96,7 +96,7 @@ let items = [
                     }
                     if devoption == true {
                         Button {  //reset shop achat
-                            blackon = false
+                            black = false
                             red = false
                             moneyanim = false
                             
@@ -111,7 +111,7 @@ let items = [
                         }
                         Button { //add 1000 coin to test shop
                             
-                            coins = coins + 1000
+                            Coins = Coins + 1000
                         } label: {
                             Text("add coin")
                                 .frame(width: 150,
@@ -123,7 +123,7 @@ let items = [
                         }
                         Button {   //reset coin to zero to test insufficientCoins function
                             
-                            coins =  0
+                            Coins =  0
                         } label: {
                             Text("reset coin")
                                 .frame(width: 150,
