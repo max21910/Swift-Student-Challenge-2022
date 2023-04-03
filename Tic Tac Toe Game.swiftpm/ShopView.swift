@@ -7,22 +7,26 @@ struct Item: Identifiable {
 }
 
 let items = [
-    Item(id: "one", name: "🎉 Confetti", price: 20),
-    Item(id: "two", name: "💸 Money", price: 50),
-    Item(id: "three", name: "❤️ Love", price: 100)
+    Item(id: "one", name: "blue Background", price: 20),
+    Item(id: "two", name: "orange Background", price: 50),
+    Item(id: "three", name: "red Background", price: 100)
 ]
 
 struct ShopView: View {
     @AppStorage("Coins") var coins: Int = 100
-    @AppStorage("🎉 Confetti") var confetti = true
-    @AppStorage("💸 Money") var money = false
-    @AppStorage("❤️ Love") var love = false
+    @AppStorage("💙 Background") var blue = true
+    @AppStorage("🧡 Background ") var orange = false
+    @AppStorage("❤️ Background") var red = false
     @State private var insufficientCoins = false
+    @AppStorage("blueon") var blueon = false
+    @AppStorage("orangeon") var redon = false
+    @AppStorage("redon") var orangeon = false
+    
     
     let items = [
-        Item(id: "one", name: "🎉 Confetti", price: 20),
-        Item(id: "two", name: "💸 Money", price: 50),
-        Item(id: "three", name: "❤️ Love", price: 100)
+        Item(id: "one", name: "💙 Background", price: 20),
+        Item(id: "two", name: "🧡 Background", price: 50),
+        Item(id: "three", name: "❤️ Background", price: 100)
     ]
     
     var body: some View {
@@ -40,7 +44,7 @@ struct ShopView: View {
                 List(items) { item in
                     HStack {
                         Text(item.name)
-                        Spacer()
+                        
                         if itemIsPurchased(item) {
                             Image(systemName: "checkmark")
                                 .foregroundColor(.green)
@@ -65,6 +69,27 @@ struct ShopView: View {
                         }
                     }
                 }
+                VStack {
+                    if blue == true {
+                        Toggle(isOn: $blueon) {
+                            
+                            Text("💙 Background ")
+                        }.disabled(orangeon)
+                        
+                    }
+                    if orange == true {
+                        Toggle(isOn: $orangeon) {
+                            Text("🧡 Background ")
+                        }.disabled(blueon&&redon)
+                    }
+                    if red == true {
+                        Toggle(isOn: $red) {
+                        Text(" ❤️ Background")
+                    }.disabled(blueon&&orangeon)
+                }
+            }
+                       
+                
                 .padding()
                 
                 Spacer() // Ajout du Spacer
@@ -85,16 +110,19 @@ struct ShopView: View {
             }
             .navigationTitle("Shop")
         }
-    }
     
+    
+    
+
+    }
     func itemIsPurchased(_ item: Item) -> Bool {
         switch item.id {
         case "one":
-            return confetti
+            return blue
         case "two":
-            return money
+            return orange
         case "three":
-            return love
+            return red
         default:
             return false
         }
@@ -103,11 +131,11 @@ struct ShopView: View {
     func markItemAsPurchased(_ item: Item) {
         switch item.id {
         case "one":
-            confetti = true
+            blue = true
         case "two":
-            money = true
+            orange = true
         case "three":
-            love = true
+            red = true
         default:
             break
         }

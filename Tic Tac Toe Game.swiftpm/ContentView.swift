@@ -10,7 +10,7 @@ struct ContentView: View {
     @State private var board = Array(repeating: Array(repeating: Player.none, count: 5), count: 5)
     @State private var currentPlayer = Player.x      //--> Current characters
     @State private var winner: Player? = nil         //--> Player is winner
-    @AppStorage("counter") var counter: Int = 0              //--> Confetti animation
+    @AppStorage("counter") var counter: Int = 100              //--> Confetti animation
     @State private var ShowClock = false             //--> Hde Clock
     @State private var ShouldAnimate = false         //--> Show animation
     @State private var showAlert = false
@@ -18,6 +18,13 @@ struct ContentView: View {
     @State private var ShowPlay = true
     @AppStorage("Coins") var Coins: Int = 100           //--> Store the coin value
     @ObservedObject var stopWatchManager = StopWatchLogic()
+    @AppStorage("💙 Background") var blue = true
+    @AppStorage("🧡 Background ") var orange = false
+    @AppStorage("❤️ Background") var red = false
+    @AppStorage("blueon") var blueon = false
+    @AppStorage("orangeon") var redon = false
+    @AppStorage("redon") var orangeon = false
+    
     
     //--> Define a variable to keep track of whether all the cases are filled
     private var allCasesFilled: Bool {
@@ -33,7 +40,19 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color.blue.ignoresSafeArea() //--> blue background
+            
+            if blueon == true {
+               
+                Color.blue.ignoresSafeArea() //--> blue background
+            }
+            if orangeon == true {
+               
+                Color.orange.ignoresSafeArea() //--> blue background
+            }
+            if redon == true {
+                
+                Color.red.ignoresSafeArea() //--> blue background
+            }
             VStack(spacing: 20) {
                 // Display the current player
                 if ShowPlay == false {
@@ -49,8 +68,8 @@ struct ContentView: View {
                         Text(String(format: "%.1f", stopWatchManager.secondsElapsed))
                             .foregroundColor(.yellow)
                             .font(.title)
-                           
-                          
+                        
+                        
                         
                     }
                 }
@@ -199,10 +218,11 @@ struct ContentView: View {
             }
             
         }
-        
-        .confettiCannon(counter: $counter, num: 100, rainHeight: 1000, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
+
+            
+        .confettiCannon(counter: $counter, repetitions: 3, repetitionInterval: 0.7)
+           
     }
-    
     // Function to check for a winner
     private func checkForWinner() -> Player? {
         // Check rows
