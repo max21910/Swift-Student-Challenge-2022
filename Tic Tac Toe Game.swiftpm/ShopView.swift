@@ -13,8 +13,7 @@ let items = [
 ]
 
 struct ShopView: View {
-    @AppStorage("Coins") var coins: Int = 100
-    @AppStorage("💙 Background") var blue = true
+    @AppStorage("Coins1") var coins: Int = 1000
     @AppStorage("🧡 Background ") var orange = false
     @AppStorage("❤️ Background") var red = false
     @State private var insufficientCoins = false
@@ -24,7 +23,7 @@ struct ShopView: View {
     
     
     let items = [
-        Item(id: "one", name: "💙 Background", price: 20),
+     
         Item(id: "two", name: "🧡 Background", price: 50),
         Item(id: "three", name: "❤️ Background", price: 100)
     ]
@@ -70,23 +69,18 @@ struct ShopView: View {
                     }
                 }
                 VStack {
-                    if blue == true {
-                        Toggle(isOn: $blueon) {
-                            
-                            Text("💙 Background ")
-                            
-                        }.disabled(orangeon)
-                        
-                    }
+                    
+          
                     if orange == true {
                         Toggle(isOn: $orangeon) {
                             Text("🧡 Background ")
-                        }.disabled(blueon&&redon)
+                        }.disabled(redon)
+                        .disabled(redon)
                     }
                     if red == true {
                         Toggle(isOn: $redon) {
                         Text(" ❤️ Background")
-                    }.disabled(blueon&&orangeon)
+                    }.disabled(orangeon)
                 }
             }
                        
@@ -118,8 +112,7 @@ struct ShopView: View {
     }
     func itemIsPurchased(_ item: Item) -> Bool {
         switch item.id {
-        case "one":
-            return blue
+       
         case "two":
             return orange
         case "three":
@@ -131,8 +124,7 @@ struct ShopView: View {
     
     func markItemAsPurchased(_ item: Item) {
         switch item.id {
-        case "one":
-            blue = true
+       
         case "two":
             orange = true
         case "three":

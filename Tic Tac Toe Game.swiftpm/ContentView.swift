@@ -16,9 +16,9 @@ struct ContentView: View {
     @State private var showAlert = false
     //--> show alert Tie
     @State private var ShowPlay = true
-    @AppStorage("Coins") var Coins: Int = 100           //--> Store the coin value
+    @AppStorage("Coins1") var Coins: Int = 1000           //--> Store the coin value
     @ObservedObject var stopWatchManager = StopWatchLogic()
-    @AppStorage("💙 Background") var blue = true
+  
     @AppStorage("🧡 Background ") var orange = false
     @AppStorage("❤️ Background") var red = false
     @AppStorage("blueon") var blueon = false
@@ -42,16 +42,26 @@ struct ContentView: View {
         ZStack {
             
             if blueon == true {
-               
-                Color.blue.ignoresSafeArea() //--> blue background
+             
+                    Color.blue.ignoresSafeArea()
+                
             }
             if orangeon == true {
                
-                Color.orange.ignoresSafeArea() //--> blue background
+                Color.orange.ignoresSafeArea()
+              
+            }else {
+                if redon == false {
+                    Color.blue.ignoresSafeArea()
+                }
             }
             if redon == true {
                 
-                Color.red.ignoresSafeArea() //--> blue background
+                Color.red.ignoresSafeArea()
+            }else {
+                if orangeon == false {
+                    Color.blue.ignoresSafeArea()
+                }
             }
             VStack(spacing: 20) {
                 // Display the current player
