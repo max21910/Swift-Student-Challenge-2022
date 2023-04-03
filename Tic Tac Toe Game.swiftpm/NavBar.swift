@@ -16,6 +16,13 @@ struct NavBar: View {
                         .frame(width: 100, height: 50)
                     Text("Play")
                 }
+           ShopView()
+                .tabItem {
+                    Image(systemName: "cart.fill")
+                        .resizable()
+                        .frame(width: 100, height: 50)
+                    Text("Shop")
+                }
        
           
                 

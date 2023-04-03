@@ -10,12 +10,13 @@ struct ContentView: View {
     @State private var board = Array(repeating: Array(repeating: Player.none, count: 5), count: 5)
     @State private var currentPlayer = Player.x      //--> Current characters
     @State private var winner: Player? = nil         //--> Player is winner
-    @State private var counter: Int = 0              //--> Confetti animation
+    @AppStorage("counter") var counter: Int = 0              //--> Confetti animation
     @State private var ShowClock = false             //--> Hde Clock
     @State private var ShouldAnimate = false         //--> Show animation
-    @State private var showAlert = false             //--> show alert Tie
+    @State private var showAlert = false
+    //--> show alert Tie
     @State private var ShowPlay = true
-    @AppStorage("coin") var coin: Int = 0            //--> Store the coin value
+    @AppStorage("Coins") var Coins: Int = 100           //--> Store the coin value
     @ObservedObject var stopWatchManager = StopWatchLogic()
     
     //--> Define a variable to keep track of whether all the cases are filled
@@ -57,7 +58,7 @@ struct ContentView: View {
                     Image("coinimage")
                         .resizable()
                         .frame(width: 50,height: 30)
-                    Text(String(coin))
+                    Text(String(Coins))
                         .foregroundColor(Color.yellow)
                 }
                 
@@ -89,7 +90,7 @@ struct ContentView: View {
                                             
                                             
                                             counter += 1 //display the confetti
-                                            coin = coin + 10 // add coins
+                                            Coins = Coins + 10 // add coins
                                         }else {
                                             // Switch to the other player
                                             currentPlayer = currentPlayer == .x ? .o : .x
@@ -198,6 +199,7 @@ struct ContentView: View {
             }
             
         }
+        
         .confettiCannon(counter: $counter, num: 100, rainHeight: 1000, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
     }
     
