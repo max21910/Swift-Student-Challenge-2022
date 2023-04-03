@@ -16,6 +16,7 @@ struct ShopView: View {
     @AppStorage("orangeon") var redon = false
     @AppStorage("redon") var orangeon = false
     @AppStorage("moneyanim ") var moneyanim = false
+    @State private var devoption = false
 
     @AppStorage("moneyanimon ") var moneyanimon = false
 
@@ -71,7 +72,7 @@ struct ShopView: View {
                 }
                 VStack {
                     Text("Customisation : ")
-                       
+                    
                         .font(.title)
                         .bold()
                     
@@ -92,34 +93,52 @@ struct ShopView: View {
                         }
                         
                     }
-                    Button {//reset shop
-                        orange = false
-                        red = false
-                        moneyanim = false
-                        
-                    } label: {
-                        Text("reset shop")
-                            .frame(width: 150,
-                                   height: 50,
-                                   alignment: .center)
-                            .background(Color.green)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(20)
+                    Toggle(isOn: $devoption ) {
+                        Text("⚠️📱 Show dev option 📱⚠️")
                     }
-                    Button {//add coin
+                    if devoption == true {
+                        Button {//reset shop
+                            orange = false
+                            red = false
+                            moneyanim = false
+                            
+                        } label: {
+                            Text("reset shop")
+                                .frame(width: 150,
+                                       height: 50,
+                                       alignment: .center)
+                                .background(Color.green)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(20)
+                        }
+                        Button {//add coin
+                            
+                            coins = coins + 1000
+                        } label: {
+                            Text("add coin")
+                                .frame(width: 150,
+                                       height: 50,
+                                       alignment: .center)
+                                .background(Color.green)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(20)
+                        }
+                        Button {//add coin
+                            
+                            coins =  0
+                        } label: {
+                            Text("reset coin")
+                                .frame(width: 150,
+                                       height: 50,
+                                       alignment: .center)
+                            
+                                .background(Color.green)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(20)
+                        }
                         
-                    coins = coins + 1000
-                    } label: {
-                        Text("add coin")
-                            .frame(width: 150,
-                                   height: 50,
-                                   alignment: .center)
-                            .background(Color.green)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(20)
+                        
                     }
-
-                   
                 }
                        
                 
