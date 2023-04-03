@@ -10,7 +10,9 @@ struct ContentView: View {
     @State private var board = Array(repeating: Array(repeating: Player.none, count: 5), count: 5)
     @State private var currentPlayer = Player.x      //--> Current characters
     @State private var winner: Player? = nil         //--> Player is winner
-    @AppStorage("counter") var counter: Int = 100              //--> Confetti animation
+    @AppStorage("counter1") var counter1: Int = 100              //--> Confetti animation
+    @AppStorage("counter2") var counter2: Int = 100              //--> Confetti animation
+    @AppStorage("counter3") var counter3: Int = 100              //--> Confetti animation
     @State private var ShowClock = false             //--> Hde Clock
     @State private var ShouldAnimate = false         //--> Show animation
     @State private var showAlert = false
@@ -24,6 +26,9 @@ struct ContentView: View {
     @AppStorage("blueon") var blueon = false
     @AppStorage("orangeon") var redon = false
     @AppStorage("redon") var orangeon = false
+    @AppStorage("moneyanim ") var moneyanim = false
+    @AppStorage("moneyanimon ") var moneyanimon = false
+
     
     
     //--> Define a variable to keep track of whether all the cases are filled
@@ -118,8 +123,16 @@ struct ContentView: View {
                                             print("winner game not tie")
                                             
                                             
-                                            counter += 1 //display the confetti
-                                            Coins = Coins + 10 // add coins
+                                            if moneyanimon == true {
+                                                counter2 += 1 //display the confetti
+                                            }else {
+                                                counter1 += 1
+                                            }
+                                        
+                                    
+                                        Coins = Coins + 10 // add coins
+                                        
+                                        
                                         }else {
                                             // Switch to the other player
                                             currentPlayer = currentPlayer == .x ? .o : .x
@@ -230,7 +243,11 @@ struct ContentView: View {
         }
 
             
-        .confettiCannon(counter: $counter, repetitions: 3, repetitionInterval: 0.7)
+        .confettiCannon(counter: $counter1, repetitions: 3, repetitionInterval: 0.7)
+        
+        .confettiCannon(counter: $counter2, num:1, confettis: [.text("💵"), .text("💶"), .text("💷"), .text("💴")], confettiSize: 30, repetitions: 50, repetitionInterval: 0.1)
+        
+        
            
     }
     // Function to check for a winner

@@ -6,11 +6,6 @@ struct Item: Identifiable {
     let price: Int
 }
 
-let items = [
-    Item(id: "one", name: "blue Background", price: 20),
-    Item(id: "two", name: "orange Background", price: 50),
-    Item(id: "three", name: "red Background", price: 100)
-]
 
 struct ShopView: View {
     @AppStorage("Coins1") var coins: Int = 1000
@@ -20,12 +15,18 @@ struct ShopView: View {
     @AppStorage("blueon") var blueon = true
     @AppStorage("orangeon") var redon = false
     @AppStorage("redon") var orangeon = false
+    @AppStorage("moneyanim ") var moneyanim = false
+
+    @AppStorage("moneyanimon ") var moneyanimon = false
+
     
     
     let items = [
      
         Item(id: "two", name: "🧡 Background", price: 50),
-        Item(id: "three", name: "❤️ Background", price: 100)
+        Item(id: "three", name: "❤️ Background", price: 100),
+        Item(id: "four", name: "💸 Money Animation", price: 150),
+        
     ]
     
     var body: some View {
@@ -70,19 +71,26 @@ struct ShopView: View {
                 }
                 VStack {
                     
-          
+                    
                     if orange == true {
                         Toggle(isOn: $orangeon) {
                             Text("🧡 Background ")
                         }.disabled(redon)
-                        .disabled(redon)
+                            .disabled(redon)
                     }
                     if red == true {
                         Toggle(isOn: $redon) {
-                        Text(" ❤️ Background")
-                    }.disabled(orangeon)
+                            Text(" ❤️ Background")
+                        }.disabled(orangeon)
+                    }
+                    if moneyanim == true {
+                        Toggle(isOn: $moneyanimon) {
+                            Text(" 💸 Animation ")
+                        }
+                        
+                    }
+                   
                 }
-            }
                        
                 
                 .padding()
@@ -117,6 +125,9 @@ struct ShopView: View {
             return orange
         case "three":
             return red
+        case "four":
+            return moneyanim
+      
         default:
             return false
         }
@@ -129,6 +140,10 @@ struct ShopView: View {
             orange = true
         case "three":
             red = true
+        case "four":
+            moneyanim = true
+       
+            
         default:
             break
         }
