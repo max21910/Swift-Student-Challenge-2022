@@ -83,7 +83,7 @@ struct ShopView: View {
                         }.disabled(blueon&&redon)
                     }
                     if red == true {
-                        Toggle(isOn: $red) {
+                        Toggle(isOn: $redon) {
                         Text(" ❤️ Background")
                     }.disabled(blueon&&orangeon)
                 }
