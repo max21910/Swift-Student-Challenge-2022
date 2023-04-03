@@ -45,6 +45,9 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
+            if redon == false && orangeon  == false {
+                Color.blue.ignoresSafeArea()
+            }
             
             if blueon == true {
              
