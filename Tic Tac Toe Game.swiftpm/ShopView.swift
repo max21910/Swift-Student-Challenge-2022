@@ -18,7 +18,7 @@ struct ShopView: View {
     @AppStorage("🧡 Background ") var orange = false
     @AppStorage("❤️ Background") var red = false
     @State private var insufficientCoins = false
-    @AppStorage("blueon") var blueon = false
+    @AppStorage("blueon") var blueon = true
     @AppStorage("orangeon") var redon = false
     @AppStorage("redon") var orangeon = false
     
@@ -74,6 +74,7 @@ struct ShopView: View {
                         Toggle(isOn: $blueon) {
                             
                             Text("💙 Background ")
+                            
                         }.disabled(orangeon)
                         
                     }
