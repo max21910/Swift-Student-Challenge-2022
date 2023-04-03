@@ -70,7 +70,10 @@ struct ShopView: View {
                     }
                 }
                 VStack {
-                    
+                    Text("Customisation : ")
+                       
+                        .font(.title)
+                        .bold()
                     
                     if orange == true {
                         Toggle(isOn: $orangeon) {
@@ -112,6 +115,7 @@ struct ShopView: View {
                 }
             }
             .navigationTitle("Shop")
+
         }
     
     

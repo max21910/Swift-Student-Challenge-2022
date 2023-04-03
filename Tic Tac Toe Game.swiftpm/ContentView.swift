@@ -245,7 +245,7 @@ struct ContentView: View {
             
         .confettiCannon(counter: $counter1, repetitions: 3, repetitionInterval: 0.7)
         
-        .confettiCannon(counter: $counter2, num:1, confettis: [.text("💵"), .text("💶"), .text("💷"), .text("💴")], confettiSize: 30, repetitions: 50, repetitionInterval: 0.1)
+        .confettiCannon(counter: $counter2, num:1, confettis: [.text("💵"), .text("💶"), .text("💷"), .text("💴")], confettiSize: 30, repetitions: 40, repetitionInterval: 0.1)
         
         
            
