@@ -52,7 +52,7 @@ struct Howtoplay: View {
                 Image(systemName: "chart.bar.doc.horizontal.fill")
                     .frame(width: 10,height: 10)
                 Text("Instruction")
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color.white)
                     .bold()
                     .font(.callout)
                     .frame(width: 100,height: 60)
@@ -66,7 +66,7 @@ struct Howtoplay: View {
            print("Instruction card dismiss")
     
 },
-                      isSlideToDismissDisabled: true,
+                    isSlideToDismissDisabled: true,
                     pages: pages)
 
     }

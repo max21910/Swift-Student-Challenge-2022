@@ -23,10 +23,7 @@ struct Prelaunch: View {
                 
                 ZStack {
                     
-                    Image("Blue")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .ignoresSafeArea()
+                   
                     
                     Image("bigIcon")
                         .resizable()

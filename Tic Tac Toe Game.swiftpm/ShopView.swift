@@ -9,26 +9,24 @@ struct Item: Identifiable {
 
 struct ShopView: View {
     @AppStorage("Coins1") var coins: Int = 1000
-    @AppStorage("🧡 Background ") var orange = false
+    @AppStorage("🖤 Background ") var black = false
     @AppStorage("❤️ Background") var red = false
-    @State private var insufficientCoins = false
-    @AppStorage("blueon") var blueon = true
-    @AppStorage("orangeon") var redon = false
-    @AppStorage("redon") var orangeon = false
+    @AppStorage("blueon") var blueon = false
+    @AppStorage("redon") var redon = false
+    @AppStorage("blackon") var blackon = false
     @AppStorage("moneyanim ") var moneyanim = false
-    @State private var devoption = false
-
     @AppStorage("moneyanimon ") var moneyanimon = false
-
+    @State private var devoption = false
+    @State private var insufficientCoins = false
     
     
-    let items = [
+    //Itms inside the shop
+let items = [
      
-        Item(id: "two", name: "🧡 Background", price: 50),
+        Item(id: "two", name: "🖤 Background", price: 50),
         Item(id: "three", name: "❤️ Background", price: 100),
         Item(id: "four", name: "💸 Money Animation", price: 150),
-        
-    ]
+]
     
     var body: some View {
         NavigationView{
@@ -76,16 +74,16 @@ struct ShopView: View {
                         .font(.title)
                         .bold()
                     
-                    if orange == true {
-                        Toggle(isOn: $orangeon) {
-                            Text("🧡 Background ")
+                    if black == true {
+                        Toggle(isOn: $blackon) {
+                            Text("🖤 Background ")
                         }.disabled(redon)
-                            .disabled(redon)
+                            
                     }
                     if red == true {
                         Toggle(isOn: $redon) {
                             Text(" ❤️ Background")
-                        }.disabled(orangeon)
+                        }.disabled(blackon)
                     }
                     if moneyanim == true {
                         Toggle(isOn: $moneyanimon) {
@@ -97,8 +95,8 @@ struct ShopView: View {
                         Text("⚠️📱 Show dev option 📱⚠️")
                     }
                     if devoption == true {
-                        Button {//reset shop
-                            orange = false
+                        Button {  //reset shop achat
+                            blackon = false
                             red = false
                             moneyanim = false
                             
@@ -111,7 +109,7 @@ struct ShopView: View {
                                 .foregroundColor(Color.white)
                                 .cornerRadius(20)
                         }
-                        Button {//add coin
+                        Button { //add 1000 coin to test shop
                             
                             coins = coins + 1000
                         } label: {
@@ -123,7 +121,7 @@ struct ShopView: View {
                                 .foregroundColor(Color.white)
                                 .cornerRadius(20)
                         }
-                        Button {//add coin
+                        Button {   //reset coin to zero to test insufficientCoins function
                             
                             coins =  0
                         } label: {
@@ -145,7 +143,7 @@ struct ShopView: View {
                 .padding()
                 
                 Spacer() // Ajout du Spacer
-                
+                //animation if insufficientCoins is true
                 if insufficientCoins {
                     Text("Insufficient coins")
                         .foregroundColor(.red)
@@ -170,9 +168,8 @@ struct ShopView: View {
     }
     func itemIsPurchased(_ item: Item) -> Bool {
         switch item.id {
-       
-        case "two":
-            return orange
+       case "two":
+            return black
         case "three":
             return red
         case "four":
@@ -187,7 +184,7 @@ struct ShopView: View {
         switch item.id {
        
         case "two":
-            orange = true
+            black = true
         case "three":
             red = true
         case "four":

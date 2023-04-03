@@ -4,12 +4,13 @@
 //
 //  Created by Max  on 02/04/2023.
 //
-
+// this file containes the logics behin the chronometre of the game with all the function
 import Foundation
 import SwiftUI
 
 class StopWatchLogic: ObservableObject {
     
+    //3 modes
     enum stopWatchMode {
         case running
         case stopped
@@ -17,22 +18,23 @@ class StopWatchLogic: ObservableObject {
     }
     
     @Published var mode: stopWatchMode = .stopped
-    
     @Published var secondsElapsed = 0.0
+    
     var timer = Timer()
     
+    //start function
     func start() {
         mode = .running
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
             self.secondsElapsed += 0.1
         }
     }
-    
+    //pause function
     func pause() {
         timer.invalidate()
         mode = .paused
     }
-    
+    //Stop function
     func stop() {
         timer.invalidate()
         secondsElapsed = 0

@@ -12,17 +12,18 @@ struct About: View {
             ZStack{
               
                 VStack {
-                    Text("V1.1 Made with ❤️ in 🇫🇷 by Ma21910")
                     ProductCard(logo: "GithubIcon", titleBox: "Github", type: "Github",link: "https://github.com/max21910/Swift-Challenge2023",ButtonLabel: "link.circle.fill",imagebackground: "black")
+                    
                     ProductCard(logo: "TwitterIcon", titleBox: "Twitter", type: "Twitter ",link: "https://twitter.com/Max_dpj",ButtonLabel: "link.circle.fill",imagebackground: "blue")
+                    
                     ProductCard(logo: "InstagramIcon", titleBox: "Instagram", type: "Github Frameworks ",link: "https://instagram.com/Maxime_dpj",ButtonLabel: "link.circle.fill",imagebackground: "instagramBackground")
                     
                 Text("Frameworks use :")
                         .font(.system(size: 25, weight: .bold, design: .default))
-                        .foregroundColor(.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     ProductCard(logo: "GithubIcon", titleBox: "Welcome-Sheet", type: "Github Frameworks ",link: "https://github.com/MAJKFL/Welcome-Sheet",ButtonLabel: "link.circle.fill",imagebackground: "black")
+                    
                     ProductCard(logo: "GithubIcon", titleBox: "ConfettiSwiftUI", type: "Github Frameworks ",link: "https://github.com/simibac/ConfettiSwiftUI",ButtonLabel: "link.circle.fill",imagebackground: "black")
                 }
               
@@ -40,8 +41,8 @@ struct About: View {
 struct CardModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .cornerRadius(17)
-            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
+            .cornerRadius(18)
+            .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 0)
     }
     
 }
