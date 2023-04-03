@@ -99,12 +99,24 @@ struct ShopView: View {
                         
                     } label: {
                         Text("reset shop")
+                            .frame(width: 150,
+                                   height: 50,
+                                   alignment: .center)
+                            .background(Color.green)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(20)
                     }
                     Button {//add coin
                         
                     coins = coins + 1000
                     } label: {
                         Text("add coin")
+                            .frame(width: 150,
+                                   height: 50,
+                                   alignment: .center)
+                            .background(Color.green)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(20)
                     }
 
                    
