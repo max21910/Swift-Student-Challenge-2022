@@ -41,13 +41,15 @@ struct ShopView: View {
         NavigationView{
             VStack{
                 HStack {
-                    Image(systemName: "dollarsign.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.yellow)
-                    Text("\(Coins)")
-                        .font(.headline)
-                        .foregroundColor(.yellow)
+                    NavigationLink(destination: CoinExplanationView()) {
+                        Image(systemName: "dollarsign.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.yellow)
+                        Text("\(Coins)")
+                            .font(.headline)
+                            .foregroundColor(.yellow)
+                    }
                 }
                 List(items) { item in
                     HStack {
@@ -166,21 +168,24 @@ struct ShopView: View {
                 //animation if insufficientCoins is true
                 if insufficientCoins {
                     HStack {
-                        Image(systemName: "dollarsign.circle.fill")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.yellow)
-                        Text("Insufficient coins")
-                            .foregroundColor(.red)
-                            .padding(.bottom, 20) // Ajout du padding
-                            .animation(.default, value: insufficientCoins)
-                            .onAppear {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                    withAnimation {
-                                        insufficientCoins = false
+                        NavigationLink(destination: CoinExplanationView()) {
+                            Image(systemName: "dollarsign.circle.fill")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.yellow)
+                                .padding(.bottom, 20)
+                            Text("Insufficient coins")
+                                .foregroundColor(.red)
+                                .padding(.bottom, 20) // Ajout du padding
+                                .animation(.default, value: insufficientCoins)
+                                .onAppear {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+                                        withAnimation {
+                                            insufficientCoins = false
+                                        }
                                     }
                                 }
-                            }
+                        }
                     }
                 }
             }
