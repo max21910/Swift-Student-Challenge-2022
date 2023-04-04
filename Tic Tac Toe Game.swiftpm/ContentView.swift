@@ -10,9 +10,9 @@ struct ContentView: View {
     @State private var board = Array(repeating: Array(repeating: Player.none, count: 5), count: 5)
     @State private var currentPlayer = Player.x                  //--> Current characters
     @State private var winner: Player? = nil                     //--> Player is winner
-    @AppStorage("counter1") var counter1: Int = 100              //--> Confetti animation
-    @AppStorage("counter2") var counter2: Int = 100              //--> Confetti animation
-    @AppStorage("counter3") var counter3: Int = 100              //--> Confetti animation
+    @AppStorage("counter1") var counter1: Int = 0              //--> Confetti animation
+    @AppStorage("counter2") var counter2: Int = 0              //--> Confetti animation
+    @AppStorage("counter3") var counter3: Int = 0              //--> Confetti animation
     @State private var ShowClock = false                         //--> Hde Clock
     @State private var ShouldAnimate = false                     //--> Show animation
     @State private var showAlert = false                         //--> Show Tie Alert
@@ -26,6 +26,10 @@ struct ContentView: View {
     @AppStorage("blackon") var blackon = false
     @AppStorage("moneyanim ") var moneyanim = false
     @AppStorage("moneyanimon ") var moneyanimon = false
+    @AppStorage("loveanim ") var loveanim = false
+    @AppStorage("loveanimon ") var loveanimon = false
+    @State private var noanimon = false
+
 
     
     
@@ -133,8 +137,25 @@ struct ContentView: View {
                                                 
                                                 
                                                 if moneyanimon == true {
+                                                    noanimon = false
+                                                    loveanimon = false //avoid show to animation at one time
+                                                    
                                                     counter2 += 1 //display the confetti
+                                                } else {
+                                                    noanimon = true
+                                                }
+                                                
+                                                
+                                            
+                                                if loveanimon == true {
+                                                    moneyanimon = false   //avoid show to animation at one time
+                                                    noanimon = false
+                                                    counter3 += 1
                                                 }else {
+                                                    noanimon = true
+                                                }
+                                                
+                                                if noanimon == true {
                                                     counter1 += 1
                                                 }
                                                 
@@ -264,6 +285,7 @@ struct ContentView: View {
         
         .confettiCannon(counter: $counter2, num:1, confettis: [.text("💵"), .text("💶"), .text("💷"), .text("💴")], confettiSize: 30, repetitions: 40, repetitionInterval: 0.1)
         
+        .confettiCannon(counter: $counter3, confettis: [.text("❤️"), .text("💙"), .text("💚"), .text("🧡")])
         
            
     }

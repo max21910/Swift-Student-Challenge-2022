@@ -16,6 +16,8 @@ struct ShopView: View {
     @AppStorage("blackon") var blackon = false
     @AppStorage("moneyanim ") var moneyanim = false
     @AppStorage("moneyanimon ") var moneyanimon = false
+    @AppStorage("loveanim ") var loveanim = false
+    @AppStorage("loveanimon ") var loveanimon = false
     @State private var devoption = false
     @State private var insufficientCoins = false
     
@@ -26,6 +28,7 @@ let items = [
         Item(id: "two", name: "🖤 Background", price: 50),
         Item(id: "three", name: "❤️ Background", price: 100),
         Item(id: "four", name: "💸 Money Animation", price: 150),
+        Item(id: "five", name: "❤️ love Animation", price: 300),
 ]
     
     var body: some View {
@@ -88,9 +91,20 @@ let items = [
                     if moneyanim == true {
                         Toggle(isOn: $moneyanimon) {
                             Text(" 💸 Animation ")
-                        }
+                        }.disabled(loveanimon)
                         
                     }
+                    if loveanim == true {
+                        Toggle(isOn: $loveanimon) {
+                            Text("❤️ Animation ")
+                        }.disabled(moneyanimon)
+                        
+                    }
+                    
+                    
+                    
+                    
+                    
                     Toggle(isOn: $devoption ) {
                         Text("⚠️📱 Show dev option 📱⚠️")
                     }
@@ -99,6 +113,11 @@ let items = [
                             black = false
                             red = false
                             moneyanim = false
+                            loveanim = false
+                            loveanimon = false
+                            moneyanimon = false
+                            redon = false
+                            blackon = false
                             
                         } label: {
                             Text("reset shop")
@@ -152,7 +171,7 @@ let items = [
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                                 withAnimation {
-                                    insufficientCoins = false
+                                    insufficientCoins = false 
                                 }
                             }
                         }
@@ -174,6 +193,8 @@ let items = [
             return red
         case "four":
             return moneyanim
+        case "five":
+            return loveanim
       
         default:
             return false
@@ -189,6 +210,8 @@ let items = [
             red = true
         case "four":
             moneyanim = true
+        case"five":
+            loveanim = true
        
             
         default:
