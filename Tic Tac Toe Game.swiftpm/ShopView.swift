@@ -1,3 +1,9 @@
+//
+//  ShopView.swift
+//  Tic Tac Toe Game
+//
+//  Created by Max  on 03/04/2023.
+//
 import SwiftUI
 
 struct Item: Identifiable {
@@ -23,13 +29,13 @@ struct ShopView: View {
     
     
     //Itms inside the shop
-let items = [
-     
+    let items = [
+        
         Item(id: "two", name: "🖤 Background", price: 50),
         Item(id: "three", name: "❤️ Background", price: 100),
         Item(id: "four", name: "💸 Money Animation", price: 150),
         Item(id: "five", name: "❤️ love Animation", price: 300),
-]
+    ]
     
     var body: some View {
         NavigationView{
@@ -81,7 +87,7 @@ let items = [
                         Toggle(isOn: $blackon) {
                             Text("🖤 Background ")
                         }.disabled(redon)
-                            
+                        
                     }
                     if red == true {
                         Toggle(isOn: $redon) {
@@ -100,11 +106,6 @@ let items = [
                         }.disabled(moneyanimon)
                         
                     }
-                    
-                    
-                    
-                    
-                    
                     Toggle(isOn: $devoption ) {
                         Text("⚠️📱 Show dev option 📱⚠️")
                     }
@@ -157,37 +158,45 @@ let items = [
                         
                     }
                 }
-                       
+                
                 
                 .padding()
                 
                 Spacer() // Ajout du Spacer
                 //animation if insufficientCoins is true
                 if insufficientCoins {
-                    Text("Insufficient coins")
-                        .foregroundColor(.red)
-                        .padding(.bottom, 20) // Ajout du padding
-                        .animation(.default, value: insufficientCoins)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                withAnimation {
-                                    insufficientCoins = false 
+                    HStack {
+                        Image(systemName: "dollarsign.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.yellow)
+                        Text("Insufficient coins")
+                            .foregroundColor(.red)
+                            .padding(.bottom, 20) // Ajout du padding
+                            .animation(.default, value: insufficientCoins)
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    withAnimation {
+                                        insufficientCoins = false
+                                    }
                                 }
                             }
-                        }
+                    }
                 }
             }
-            .navigationTitle("Shop")
-
+            .navigationTitle("Shop") //title of the pages
+            
         }
-    
-    
-    
-
+        
+        
+        
+        
     }
+    
+    //if a items is purshase this function link the items with is variable
     func itemIsPurchased(_ item: Item) -> Bool {
         switch item.id {
-       case "two":
+        case "two":
             return black
         case "three":
             return red
@@ -195,15 +204,16 @@ let items = [
             return moneyanim
         case "five":
             return loveanim
-      
+            
         default:
             return false
         }
     }
     
+    //this function mark items if is it Purchased and return a true variable
     func markItemAsPurchased(_ item: Item) {
         switch item.id {
-       
+            
         case "two":
             black = true
         case "three":
@@ -212,7 +222,7 @@ let items = [
             moneyanim = true
         case"five":
             loveanim = true
-       
+            
             
         default:
             break

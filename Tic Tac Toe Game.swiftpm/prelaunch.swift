@@ -1,8 +1,8 @@
 /*
-prelaunch.swift
-Emojie Speed Games
-Created by Max  on 31/03/2023.
-find this project on Github at :
+ prelaunch.swift
+ Emojie Speed Games
+ Created by Max  on 31/03/2023.
+ find this project on Github at :
  https://github.com/max21910/LaunchScreen-iOS
  */
 import SwiftUI
@@ -16,15 +16,12 @@ struct Prelaunch: View {
     var body: some View {
         Group {
             if animationisfinish == true {
-          NavBar()
+                NavBar() //launch app view if the animation is finish
                 
             } else {
                 
                 
                 ZStack {
-                    
-                   
-                    
                     Image("bigIcon")
                         .resizable()
                         .frame(width: 100, height: 100)
