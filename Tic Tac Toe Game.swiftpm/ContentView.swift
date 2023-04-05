@@ -221,9 +221,7 @@ struct ContentView: View {
                     
                     // Display the winner (if any, no Tie) with animation
                     if let winner = winner {
-                        if vibration == true {
-                            let impact = UIImpactFeedbackGenerator(style: .heavy)
-                        }
+                       
                         Text("Player \(winner.rawValue) wins! 👑")
                             .foregroundColor(.yellow)
                             .font(.largeTitle)
@@ -238,6 +236,9 @@ struct ContentView: View {
                             .onAppear {
                                 self.ShouldAnimate = true
                                 ShowPlay = true
+                                if vibration == true {
+                                    impact.impactOccurred()
+                                }
                             }
                         
                         

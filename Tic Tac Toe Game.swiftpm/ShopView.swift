@@ -31,7 +31,7 @@ struct ShopView: View {
     @State private var devoption = false
     @State private var Completepurchase = false
     @State private var Errorpurshase = false
-    
+    let impact = UIImpactFeedbackGenerator()
     
     
     //Itms inside the shop
@@ -79,11 +79,17 @@ struct ShopView: View {
                                         Coins -= item.price
                                         markItemAsPurchased(item)
                                         Completepurchase.toggle()
+                                        if vibration == true {
+                                            impact.impactOccurred()
+                                        }
                                     }
                                 } else {
                                     withAnimation {
                                         
                                         Errorpurshase.toggle()
+                                        if vibration == true {
+                                            impact.impactOccurred()
+                                        }
                                     }
                                 }
                             }) {
@@ -131,6 +137,9 @@ struct ShopView: View {
                     if devoption == true {
                         HStack {
                             Button {  //reset shop achat
+                                if vibration == true {
+                                    impact.impactOccurred()
+                                }
                                 black = false
                                 red = false
                                 moneyanim = false
@@ -152,6 +161,9 @@ struct ShopView: View {
                             Button { //add 1000 coin to test shop
                                 
                                 Coins = Coins + 1000
+                                if vibration == true {
+                                    impact.impactOccurred()
+                                }
                             } label: {
                                 Text("add coin")
                                     .frame(width: 100,
@@ -164,6 +176,9 @@ struct ShopView: View {
                             Button {   //reset coin to zero to test insufficientCoins function
                                 
                                 Coins =  0
+                                if vibration == true {
+                                    impact.impactOccurred()
+                                }
                             } label: {
                                 Text("reset coin")
                                     .frame(width: 100,
