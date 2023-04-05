@@ -10,7 +10,9 @@ import SwiftUI
 struct Frameworks: View {
     var body: some View {
         NavigationView {
-            
+            VStack{
+                Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
+            }
         }
         .navigationTitle("Frameworks")
     }
