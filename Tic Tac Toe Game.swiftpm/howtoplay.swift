@@ -8,7 +8,8 @@ import SwiftUI
 import WelcomeSheet
 
 struct Howtoplay: View {
-    @State  var showSheet = false
+    @AppStorage("showSheet") var showSheet = false
+   
     
     let pages = [
         WelcomeSheetPage(title: "Welcome to Tic tac toe ", rows: [

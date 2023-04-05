@@ -5,6 +5,7 @@
 //  Created by Max  on 31/03/2023.
 //
 import SwiftUI
+import AlertToast
 
     
     
@@ -12,12 +13,13 @@ struct About: View {
     let instagramLink = "https://www.instagram.com/Maxime_dpj"
     let twitterLink = "https://twitter.com/max21160"
     let githubLink = "https://github.com/max21910"
-    
+    @State private var Welcome = false
     
     var body: some View {
+        
         NavigationView{
             
-            
+           
             ZStack {
                 
                 Color.black.ignoresSafeArea()
@@ -26,6 +28,11 @@ struct About: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
+                        .onAppear {
+                            Welcome.toggle()
+                        }
+                    
+                       
                     
                     
                     Text("Développeur")
@@ -82,8 +89,14 @@ struct About: View {
             }
             .navigationTitle("About")
         }
+        .toast(isPresenting: $Welcome) {
+            
+            // `.alert` is the default displayMode
+            AlertToast(displayMode: .banner(.pop),type: .regular, title: "Thanks for See my App!", subTitle: "Maxime Jourdan")
+        }
     }
 }
+
 
 struct About_Previews: PreviewProvider {
     static var previews: some View {
