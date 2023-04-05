@@ -11,6 +11,7 @@ struct NavBar: View {
         TabView {
             ContentView()
                 .tabItem {
+                    
                     Image(systemName: "gamecontroller")
                         .resizable()
                         .frame(width: 100, height: 50)

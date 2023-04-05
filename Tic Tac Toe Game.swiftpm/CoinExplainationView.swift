@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct CoinExplanationView: View {
     @State private var isCoinRotating = false
     

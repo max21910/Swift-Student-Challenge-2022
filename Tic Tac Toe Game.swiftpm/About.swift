@@ -5,7 +5,7 @@
 //  Created by Max  on 31/03/2023.
 //
 import SwiftUI
-import AlertToast
+
 
     
     
@@ -14,6 +14,7 @@ struct About: View {
     let twitterLink = "https://twitter.com/max21160"
     let githubLink = "https://github.com/max21910"
     @State private var Welcome = false
+    @AppStorage("showanime") var showanime = true
     
     var body: some View {
         
@@ -29,7 +30,9 @@ struct About: View {
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
                         .onAppear {
-                            Welcome.toggle()
+                            if showanime == true { //if this is the first time show the animation should be true
+                                Welcome.toggle()
+                            }
                         }
                     
                        
@@ -85,14 +88,23 @@ struct About: View {
                                 .padding(10)
                         }
                     }
+                    NavigationLink(destination: Frameworks()) {
+                        Text("Frameworks use in this project")
+                        Image(systemName: "info.circle")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                    }
                 }
             }
             .navigationTitle("About")
         }
-        .toast(isPresenting: $Welcome) {
+        .toast(isPresenting: $Welcome, duration: 2) {
             
             // `.alert` is the default displayMode
             AlertToast(displayMode: .banner(.pop),type: .systemImage("person.line.dotted.person.fill", Color.blue), title: "Thanks for Use my App!", subTitle: "Maxime Jourdan - Developer")
+        } completion: {
+           //Completion block after dismiss
+            showanime = false //make sure to show only 1 time the greeting animation
         }
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Max  on 03/04/2023.
 //
 import SwiftUI
-import AlertToast
+
 
 
 
@@ -27,6 +27,7 @@ struct ShopView: View {
     @AppStorage("moneyanimon ") var moneyanimon = false
     @AppStorage("loveanim ") var loveanim = false
     @AppStorage("loveanimon ") var loveanimon = false
+    @AppStorage("vibration ") var vibration = true
     @State private var devoption = false
     @State private var Completepurchase = false
     @State private var Errorpurshase = false
@@ -97,7 +98,10 @@ struct ShopView: View {
                     
                         .font(.title)
                         .bold()
-                    
+                  
+                        Toggle(isOn: $vibration) {
+                            Text("Vibration")
+                        }
                     if black == true {
                         Toggle(isOn: $blackon) {
                             Text("⬛️ Background ")

@@ -5,11 +5,12 @@
 //  Created by Max  on 31/03/2023.
 //
 import SwiftUI
-import WelcomeSheet
+
 
 struct Howtoplay: View {
    @State private var showSheet = false
-   
+    let impact = UIImpactFeedbackGenerator() //set vibration
+    @AppStorage("vibration ") var vibration = true
     
     let pages = [
         WelcomeSheetPage(title: "Welcome to Tic tac toe ", rows: [
@@ -46,6 +47,9 @@ struct Howtoplay: View {
     var body: some View {
         
         Button(action: {
+            if vibration == true {
+                impact.impactOccurred()
+            }
             showSheet.toggle()
             
         }, label: {

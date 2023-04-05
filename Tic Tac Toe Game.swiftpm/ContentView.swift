@@ -4,8 +4,9 @@
  */
 
 import SwiftUI
-import ConfettiSwiftUI
-import AlertToast
+
+
+import UIKit
 
 struct ContentView: View {
     @State private var board = Array(repeating: Array(repeating: Player.none, count: 5), count: 5)
@@ -29,11 +30,10 @@ struct ContentView: View {
     @AppStorage("moneyanimon ") var moneyanimon = false
     @AppStorage("loveanim ") var loveanim = false
     @AppStorage("loveanimon ") var loveanimon = false
+    @AppStorage("vibration ") var vibration = true
     @State private var noanimon = false
     @State private var coinanimation = false
-
-
-    
+    let impact = UIImpactFeedbackGenerator()
     
     //--> Define a variable to keep track of whether all the cases are filled
     private var allCasesFilled: Bool {
@@ -175,6 +175,9 @@ struct ContentView: View {
                                                 
                                                 
                                             }else {
+                                                if vibration == true {
+                                                    impact.impactOccurred()
+                                                }
                                                 // Switch to the other player
                                                 currentPlayer = currentPlayer == .x ? .o : .x
                                             }
@@ -218,6 +221,9 @@ struct ContentView: View {
                     
                     // Display the winner (if any, no Tie) with animation
                     if let winner = winner {
+                        if vibration == true {
+                            let impact = UIImpactFeedbackGenerator(style: .heavy)
+                        }
                         Text("Player \(winner.rawValue) wins! 👑")
                             .foregroundColor(.yellow)
                             .font(.largeTitle)
@@ -300,7 +306,7 @@ struct ContentView: View {
             
             .confettiCannon(counter: $counter1, repetitions: 3, repetitionInterval: 0.7)
             
-            .confettiCannon(counter: $counter2, num:1, confettis: [.text("💵"), .text("💶"), .text("💷"), .text("💴")], confettiSize: 30, repetitions: 40, repetitionInterval: 0.1)
+            .confettiCannon(counter: $counter2, num:1, confettis: [.text("💵")], confettiSize: 30, repetitions: 40, repetitionInterval: 0.1)
             
             .confettiCannon(counter: $counter3, confettis: [.text("❤️"), .text("💙"), .text("💚"), .text("🧡")])
             
