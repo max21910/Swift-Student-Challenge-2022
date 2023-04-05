@@ -15,70 +15,72 @@ struct About: View {
     
     
     var body: some View {
-        
-        
-        
-        ZStack {
+        NavigationView{
             
-            Color.black.ignoresSafeArea()
-            VStack {
-                Image("bigIcon")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .clipShape(Circle())
+            
+            ZStack {
                 
-                
-                Text("Développeur")
-                    .font(.title)
-                    .fontWeight(.bold)
-                
-                Text("Maxime Jourdan")
-                    .font(.headline)
-                    .foregroundColor(.gray)
-                
-                Text("maxime21160@icloud.com")
-                    .font(.headline)
-                    .foregroundColor(.gray)
-                
-                HStack {
-                    Button(action: {
-                        guard let url = URL(string: instagramLink) else { return }
-                        UIApplication.shared.open(url)
-                    }) {
-                        Image("InstagramIcon")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.pink)
-                            .font(.system(size: 24))
-                            .padding(10)
+                Color.black.ignoresSafeArea()
+                VStack {
+                    Image("bigIcon")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .clipShape(Circle())
+                    
+                    
+                    Text("Développeur")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                    Text("Maxime Jourdan")
+                        .font(.headline)
+                        .foregroundColor(.gray)
+                    
+                    Text("maxime21160@icloud.com")
+                        .font(.headline)
+                        .foregroundColor(.gray)
+                    
+                    HStack {
+                        Button(action: {
+                            guard let url = URL(string: instagramLink) else { return }
+                            UIApplication.shared.open(url)
+                        }) {
+                            Image("InstagramIcon")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.pink)
+                                .font(.system(size: 24))
+                                .padding(10)
+                            
+                        }
                         
-                    }
-                    
-                    Button(action: {
-                        guard let url = URL(string: twitterLink) else { return }
-                        UIApplication.shared.open(url)
-                    }) {
-                        Image("TwitterIcon")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.blue)
-                            .font(.system(size: 24))
-                            .padding(10)
-                    }
-                    
-                    Button(action: {
-                        guard let url = URL(string: githubLink) else { return }
-                        UIApplication.shared.open(url)
-                    }) {
-                        Image("GithubIcon")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.black)
-                            .font(.system(size: 24))
-                            .padding(10)
+                        Button(action: {
+                            guard let url = URL(string: twitterLink) else { return }
+                            UIApplication.shared.open(url)
+                        }) {
+                            Image("TwitterIcon")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.blue)
+                                .font(.system(size: 24))
+                                .padding(10)
+                        }
+                        
+                        Button(action: {
+                            guard let url = URL(string: githubLink) else { return }
+                            UIApplication.shared.open(url)
+                        }) {
+                            Image("GithubIcon")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.black)
+                                .font(.system(size: 24))
+                                .padding(10)
+                        }
                     }
                 }
             }
+            .navigationTitle("About")
         }
     }
 }
