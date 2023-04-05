@@ -8,7 +8,7 @@ import SwiftUI
 import WelcomeSheet
 
 struct Howtoplay: View {
-    @AppStorage("showSheet") var showSheet = false
+   @State private var showSheet = false
    
     
     let pages = [
