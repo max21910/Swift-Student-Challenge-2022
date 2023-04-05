@@ -31,6 +31,9 @@ struct ShopView: View {
     @State private var devoption = false
     @State private var Completepurchase = false
     @State private var Errorpurshase = false
+    @State private var hapticon = false
+    @State private var hapticoff = false
+    
     let impact = UIImpactFeedbackGenerator()
     
     
@@ -100,14 +103,24 @@ struct ShopView: View {
                     }
                 }
                 VStack {
-                    Text("Customisation : ")
-                    
-                        .font(.title)
-                        .bold()
-                  
+                    HStack{
+                        Image(systemName: "gear")
+                        Text("Settings : ")
+                        
+                            .font(.title)
+                            .bold()
+                    }
                         Toggle(isOn: $vibration) {
-                            Text("Vibration")
+                           
+                            HStack{
+                                Image(systemName: "iphone.gen3.radiowaves.left.and.right")
+                                   
+                                   
+                                Text("Haptic Feedback")
+                            }
                         }
+                 
+                    
                     if black == true {
                         Toggle(isOn: $blackon) {
                             Text("⬛️ Background ")
@@ -202,8 +215,7 @@ struct ShopView: View {
                 //animation if insufficientCoins is true
                 
                 
-                
-                
+              
   
             }
             .navigationTitle("Shop") //title of the pages
@@ -214,8 +226,17 @@ struct ShopView: View {
             // `.alert` is the default displayMode
             AlertToast(displayMode: .banner(.pop),type: .complete(.green), title: "Purchase Completed!", subTitle: nil)
         }
+        .toast(isPresenting: $hapticon){
+            
+            // `.alert` is the default displayMode
+            AlertToast(displayMode: .banner(.pop),type: .complete(.green), title: "Haptic Feedback Activated", subTitle: nil)
+        }
         .toast(isPresenting: $Errorpurshase){
             AlertToast(type: .error(.red), title: "Error occur", subTitle: "Not enough Coins")
+            
+        }
+        .toast(isPresenting: $hapticoff){
+            AlertToast(type: .error(.red), title: "Haptic Feedback desactivated", subTitle: nil)
             
         }
         
