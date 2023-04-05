@@ -35,7 +35,7 @@ struct About: View {
                        
                     
                     
-                    Text("Développeur")
+                    Text("Developer")
                         .font(.title)
                         .fontWeight(.bold)
                     
@@ -92,7 +92,7 @@ struct About: View {
         .toast(isPresenting: $Welcome) {
             
             // `.alert` is the default displayMode
-            AlertToast(displayMode: .banner(.pop),type: .regular, title: "Thanks for See my App!", subTitle: "Maxime Jourdan")
+            AlertToast(displayMode: .banner(.pop),type: .systemImage("person.line.dotted.person.fill", Color.blue), title: "Thanks for Use my App!", subTitle: "Maxime Jourdan - Developer")
         }
     }
 }
