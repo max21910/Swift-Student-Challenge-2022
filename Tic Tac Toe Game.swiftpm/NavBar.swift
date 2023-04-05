@@ -28,6 +28,8 @@ struct NavBar: View {
                     Image(systemName: "info.circle")
                     Text("About")
                 }
+           
+            
         }
     }
 }

@@ -5,6 +5,9 @@
 //  Created by Max  on 03/04/2023.
 //
 import SwiftUI
+import AlertToast
+
+
 
 struct Item: Identifiable {
     let id: String
@@ -15,8 +18,8 @@ struct Item: Identifiable {
 
 struct ShopView: View {
     @AppStorage("Coins1") var Coins: Int = 1000
-    @AppStorage("🖤 Background ") var black = false
-    @AppStorage("❤️ Background") var red = false
+    @AppStorage("⬛️ Background ") var black = false
+    @AppStorage("🟥 Background") var red = false
     @AppStorage("blueon") var blueon = false
     @AppStorage("redon") var redon = false
     @AppStorage("blackon") var blackon = false
@@ -25,14 +28,16 @@ struct ShopView: View {
     @AppStorage("loveanim ") var loveanim = false
     @AppStorage("loveanimon ") var loveanimon = false
     @State private var devoption = false
-    @State private var insufficientCoins = false
+    @State private var Completepurchase = false
+    @State private var Errorpurshase = false
+    
     
     
     //Itms inside the shop
     let items = [
         
-        Item(id: "two", name: "🖤 Background", price: 50),
-        Item(id: "three", name: "❤️ Background", price: 100),
+        Item(id: "two", name: "⬛️ Background", price: 50),
+        Item(id: "three", name: "🟥  Background", price: 100),
         Item(id: "four", name: "💸 Money Animation", price: 150),
         Item(id: "five", name: "❤️ love Animation", price: 300),
     ]
@@ -50,7 +55,7 @@ struct ShopView: View {
                         Text("\(Coins)")
                             .font(.headline)
                             .foregroundColor(.yellow)
-                   
+                        
                         Image(systemName: "info.circle")
                             .resizable()
                             .frame(width: 20, height: 20)
@@ -72,10 +77,12 @@ struct ShopView: View {
                                     withAnimation {
                                         Coins -= item.price
                                         markItemAsPurchased(item)
+                                        Completepurchase.toggle()
                                     }
                                 } else {
                                     withAnimation {
-                                        insufficientCoins = true
+                                        
+                                        Errorpurshase.toggle()
                                     }
                                 }
                             }) {
@@ -93,13 +100,13 @@ struct ShopView: View {
                     
                     if black == true {
                         Toggle(isOn: $blackon) {
-                            Text("🖤 Background ")
+                            Text("⬛️ Background ")
                         }.disabled(redon)
                         
                     }
                     if red == true {
                         Toggle(isOn: $redon) {
-                            Text(" ❤️ Background")
+                            Text(" 🟥  Background")
                         }.disabled(blackon)
                     }
                     if moneyanim == true {
@@ -172,35 +179,24 @@ struct ShopView: View {
                 
                 Spacer() // Ajout du Spacer
                 //animation if insufficientCoins is true
-                if insufficientCoins {
-                    HStack {
-                        NavigationLink(destination: CoinExplanationView()) {
-                            Image(systemName: "dollarsign.circle.fill")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(.yellow)
-                                .padding(.bottom, 20)
-                            Text("Insufficient coins")
-                                .foregroundColor(.red)
-                                .padding(.bottom, 20) // Ajout du padding
-                                .animation(.default, value: insufficientCoins)
-                                .onAppear {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
-                                        withAnimation {
-                                            insufficientCoins = false
-                                        }
-                                    }
-                                }
-                        }
-                    }
-                }
+                
+                
+                
+                
+  
             }
             .navigationTitle("Shop") //title of the pages
             
         }
-        
-        
-        
+        .toast(isPresenting: $Completepurchase){
+            
+            // `.alert` is the default displayMode
+            AlertToast(displayMode: .banner(.pop),type: .complete(.green), title: "Purchase Completed!", subTitle: nil)
+        }
+        .toast(isPresenting: $Errorpurshase){
+            AlertToast(type: .error(.red), title: "Error occur", subTitle: "Not enough Coins")
+            
+        }
         
     }
     

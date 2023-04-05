@@ -37,14 +37,16 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/simibac/ConfettiSwiftUI.git", "1.0.0"..<"2.0.0"),
-        .package(url: "https://github.com/MAJKFL/Welcome-Sheet", .branch("main"))
+        .package(url: "https://github.com/MAJKFL/Welcome-Sheet", .branch("main")),
+        .package(url: "https://github.com/elai950/AlertToast.git", "1.0.0"..<"2.0.0")
     ],
     targets: [
         .executableTarget(
             name: "AppModule",
             dependencies: [
                 .product(name: "ConfettiSwiftUI", package: "confettiswiftui"),
-                .product(name: "WelcomeSheet", package: "welcome-sheet")
+                .product(name: "WelcomeSheet", package: "welcome-sheet"),
+                .product(name: "AlertToast", package: "alerttoast")
             ],
             path: "."
         )
