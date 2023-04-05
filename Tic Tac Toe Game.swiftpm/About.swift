@@ -5,88 +5,87 @@
 //  Created by Max  on 31/03/2023.
 //
 import SwiftUI
+
+    
+    
 struct About: View {
-    var body: some View {
-        
-        NavigationView {
-            ZStack{
-              
-                VStack {
-                    ProductCard(logo: "GithubIcon", titleBox: "Github", type: "Github",link: "https://github.com/max21910/Swift-Challenge2023",ButtonLabel: "link.circle.fill",imagebackground: "black")
-                    
-                    ProductCard(logo: "TwitterIcon", titleBox: "Twitter", type: "Twitter ",link: "https://twitter.com/Max_dpj",ButtonLabel: "link.circle.fill",imagebackground: "blue")
-                    
-                    ProductCard(logo: "InstagramIcon", titleBox: "Instagram", type: "Github Frameworks ",link: "https://instagram.com/Maxime_dpj",ButtonLabel: "link.circle.fill",imagebackground: "instagramBackground")
-                    
-                Text("Frameworks use :")
-                        .font(.system(size: 25, weight: .bold, design: .default))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    ProductCard(logo: "GithubIcon", titleBox: "Welcome-Sheet", type: "Github Frameworks ",link: "https://github.com/MAJKFL/Welcome-Sheet",ButtonLabel: "link.circle.fill",imagebackground: "black")
-                    
-                    ProductCard(logo: "GithubIcon", titleBox: "ConfettiSwiftUI", type: "Github Frameworks ",link: "https://github.com/simibac/ConfettiSwiftUI",ButtonLabel: "link.circle.fill",imagebackground: "black")
-                }
-              
-                .navigationTitle("About")
-            }
-            
-            
-        }
-        
-        
-    }
-    
-}
-
-struct CardModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .cornerRadius(18)
-            .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 0)
-    }
-    
-}
-
-struct ProductCard: View {
-    
-    var logo: String
-    var titleBox: String
-    var type: String
-    var link: String
-    var ButtonLabel: String
-    var imagebackground: String
+    let instagramLink = "https://www.instagram.com/Maxime_dpj"
+    let twitterLink = "https://twitter.com/max21160"
+    let githubLink = "https://github.com/max21910"
     
     
     var body: some View {
-        HStack(alignment: .center) {
-            Image(logo)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 40)
-                .padding(.all, 20)
+        
+        
+        
+        ZStack {
             
-            VStack(alignment: .leading) {
-                Text(titleBox)
-                    .font(.system(size: 23, weight: .bold, design: .default))
-                    .foregroundColor(.white)
-                Text(type)
-                    .font(.system(size: 18, weight: .bold, design: .default))
-                    .foregroundColor(.gray)
-                Link(destination: URL(string: link)!, label: {
-                    Image(systemName: ButtonLabel)
-                })
+            Color.black.ignoresSafeArea()
+            VStack {
+                Image("bigIcon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(Circle())
                 
-            }.padding(.trailing, 20)
-            Spacer()
+                
+                Text("Développeur")
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                Text("Maxime Jourdan")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                
+                Text("maxime21160@icloud.com")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                
+                HStack {
+                    Button(action: {
+                        guard let url = URL(string: instagramLink) else { return }
+                        UIApplication.shared.open(url)
+                    }) {
+                        Image("InstagramIcon")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.pink)
+                            .font(.system(size: 24))
+                            .padding(10)
+                        
+                    }
+                    
+                    Button(action: {
+                        guard let url = URL(string: twitterLink) else { return }
+                        UIApplication.shared.open(url)
+                    }) {
+                        Image("TwitterIcon")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.blue)
+                            .font(.system(size: 24))
+                            .padding(10)
+                    }
+                    
+                    Button(action: {
+                        guard let url = URL(string: githubLink) else { return }
+                        UIApplication.shared.open(url)
+                    }) {
+                        Image("GithubIcon")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.black)
+                            .font(.system(size: 24))
+                            .padding(10)
+                    }
+                }
+            }
         }
-        .frame(maxWidth: .infinity, alignment: .center)
-        .background(Image(imagebackground))
-        .modifier(CardModifier())
-        .padding(.all, 6)
     }
 }
+
 struct About_Previews: PreviewProvider {
     static var previews: some View {
         About()
     }
 }
+

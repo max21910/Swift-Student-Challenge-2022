@@ -45,10 +45,16 @@ struct ShopView: View {
                         Image(systemName: "dollarsign.circle.fill")
                             .resizable()
                             .frame(width: 30, height: 30)
+                        
                             .foregroundColor(.yellow)
                         Text("\(Coins)")
                             .font(.headline)
                             .foregroundColor(.yellow)
+                   
+                        Image(systemName: "info.circle")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        
                     }
                 }
                 List(items) { item in

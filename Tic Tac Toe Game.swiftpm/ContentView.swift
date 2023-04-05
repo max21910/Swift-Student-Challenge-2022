@@ -109,6 +109,11 @@ struct ContentView: View {
                                 .font(.headline)
                                 .foregroundColor(.yellow)
                         }
+                            NavigationLink(destination: CoinExplanationView()) {
+                            Image(systemName: "info.circle")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        }
                     }
                         
                         // Display the board
