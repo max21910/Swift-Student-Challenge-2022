@@ -125,52 +125,54 @@ struct ShopView: View {
                         Text("⚠️📱 Show dev option 📱⚠️")
                     }
                     if devoption == true {
-                        Button {  //reset shop achat
-                            black = false
-                            red = false
-                            moneyanim = false
-                            loveanim = false
-                            loveanimon = false
-                            moneyanimon = false
-                            redon = false
-                            blackon = false
+                        HStack {
+                            Button {  //reset shop achat
+                                black = false
+                                red = false
+                                moneyanim = false
+                                loveanim = false
+                                loveanimon = false
+                                moneyanimon = false
+                                redon = false
+                                blackon = false
+                                
+                            } label: {
+                                Text("reset shop")
+                                    .frame(width: 100,
+                                           height: 50,
+                                           alignment: .center)
+                                    .background(Color.green)
+                                    .foregroundColor(Color.white)
+                                    .cornerRadius(20)
+                            }
+                            Button { //add 1000 coin to test shop
+                                
+                                Coins = Coins + 1000
+                            } label: {
+                                Text("add coin")
+                                    .frame(width: 100,
+                                           height: 50,
+                                           alignment: .center)
+                                    .background(Color.green)
+                                    .foregroundColor(Color.white)
+                                    .cornerRadius(20)
+                            }
+                            Button {   //reset coin to zero to test insufficientCoins function
+                                
+                                Coins =  0
+                            } label: {
+                                Text("reset coin")
+                                    .frame(width: 100,
+                                           height: 50,
+                                           alignment: .center)
+                                
+                                    .background(Color.green)
+                                    .foregroundColor(Color.white)
+                                    .cornerRadius(20)
+                            }
                             
-                        } label: {
-                            Text("reset shop")
-                                .frame(width: 150,
-                                       height: 50,
-                                       alignment: .center)
-                                .background(Color.green)
-                                .foregroundColor(Color.white)
-                                .cornerRadius(20)
+                            
                         }
-                        Button { //add 1000 coin to test shop
-                            
-                            Coins = Coins + 1000
-                        } label: {
-                            Text("add coin")
-                                .frame(width: 150,
-                                       height: 50,
-                                       alignment: .center)
-                                .background(Color.green)
-                                .foregroundColor(Color.white)
-                                .cornerRadius(20)
-                        }
-                        Button {   //reset coin to zero to test insufficientCoins function
-                            
-                            Coins =  0
-                        } label: {
-                            Text("reset coin")
-                                .frame(width: 150,
-                                       height: 50,
-                                       alignment: .center)
-                            
-                                .background(Color.green)
-                                .foregroundColor(Color.white)
-                                .cornerRadius(20)
-                        }
-                        
-                        
                     }
                 }
                 
