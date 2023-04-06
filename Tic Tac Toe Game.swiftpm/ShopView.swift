@@ -33,6 +33,7 @@ struct ShopView: View {
     @State private var Errorpurshase = false
     @State private var hapticon = false
     @State private var hapticoff = false
+    @AppStorage("GridView") var GridView = true
     
     let impact = UIImpactFeedbackGenerator()
     @State var isAnimating: Bool = false
@@ -128,6 +129,12 @@ struct ShopView: View {
                             }
                         }
                  
+                    Toggle(isOn: $GridView) {
+                        Text("Enable Grid ")
+                    }
+                    
+                    
+                    
                     
                     if black == true {
                         Toggle(isOn: $blackon) {

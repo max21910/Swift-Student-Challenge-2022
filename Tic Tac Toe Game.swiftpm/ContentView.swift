@@ -6,31 +6,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    let impact = UIImpactFeedbackGenerator()
     @State private var board = Array(repeating: Array(repeating: Player.none, count: 5), count: 5)
-    @State private var currentPlayer = Player.x                  //--> Current characters
-    @State private var winner: Player? = nil                     //--> Player is winner
-    @AppStorage("counter1") var counter1: Int = 0              //--> Confetti animation
-    @AppStorage("counter2") var counter2: Int = 0              //--> Confetti animation
-    @AppStorage("counter3") var counter3: Int = 0              //--> Confetti animation
-    @State private var ShowClock = false                         //--> Hde Clock
-    @State private var ShouldAnimate = false                     //--> Show animation
-    @State private var showAlert = false                         //--> Show Tie Alert
+    @State private var currentPlayer = Player.x
+    @State private var winner: Player? = nil
+    @State private var ShowClock = false
+    @State private var ShouldAnimate = false
+    @State private var showAlert = false
     @State private var ShowPlay = true
+    @State private var noanimon = false
+    @State private var coinanimation = false
     @AppStorage("Coins1") var Coins: Int = 1000
     @ObservedObject var stopWatchManager = StopWatchLogic()
-    @AppStorage("🖤 Background ") var black = false
-    @AppStorage("❤️ Background") var red = false
     @AppStorage("blueon") var blueon = false
     @AppStorage("redon") var redon = false
     @AppStorage("blackon") var blackon = false
-    @AppStorage("moneyanim ") var moneyanim = false
     @AppStorage("moneyanimon ") var moneyanimon = false
-    @AppStorage("loveanim ") var loveanim = false
     @AppStorage("loveanimon ") var loveanimon = false
     @AppStorage("vibration ") var vibration = true
-    @State private var noanimon = false
-    @State private var coinanimation = false
-    let impact = UIImpactFeedbackGenerator()
+    @AppStorage("counter1") var counter1: Int = 0
+    @AppStorage("counter2") var counter2: Int = 0
+    @AppStorage("counter3") var counter3: Int = 0
+    @AppStorage("GridView") var GridView = true
+    
+   
     
     //--> Define a variable to keep track of whether all the cases are filled
     private var allCasesFilled: Bool {
@@ -77,7 +76,6 @@ struct ContentView: View {
                     // Display the current player
                     if ShowPlay == false {
                         Text("🎮 \(currentPlayer.rawValue)'s turn")
-                        
                             .frame(width: 250, height:50)
                             .foregroundColor(Color.green)
                             .cornerRadius(20)
@@ -90,13 +88,8 @@ struct ContentView: View {
                             Text(String(format: "%.1f", stopWatchManager.secondsElapsed))
                                 .foregroundColor(.yellow)
                                 .font(.title)
-                            
-                            
-                            
                         }
                     }
-                    
-                    
                     Spacer()
                     HStack {
                         NavigationLink(destination: ShopView()) {
@@ -197,11 +190,13 @@ struct ContentView: View {
                                             Rectangle()
                                                 .foregroundColor(.white)// color of the player
                                                 .frame(width: 80, height: 80)
+                                               
                                                 .cornerRadius(10)
                                                 .overlay(
                                                     Text(board[row][column].rawValue)
                                                         .font(.system(size: 48))
                                                         .foregroundColor(.black)
+                                                     
                                                         .opacity(board[row][column] == .none ? 0 : 1)
                                                 )
                                                 .scaleEffect(board[row][column] == .none ? 0 : 1)
@@ -212,8 +207,16 @@ struct ContentView: View {
                         }
                         
                         .padding(20)
-                        .background(Color.white.opacity(0.7))
-                        .cornerRadius(12)
+                     
+                            .background(Image("grid").resizable()
+                                        .aspectRatio(contentMode: .fill))
+                            .background(Color.white.opacity(0.7))
+                           
+                       
+                         
+                        
+                          
+                     
                     }
                     
                     // Display the winner (if any, no Tie) with animation
