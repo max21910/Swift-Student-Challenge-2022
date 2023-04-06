@@ -5,9 +5,6 @@
 
 import SwiftUI
 
-
-import UIKit
-
 struct ContentView: View {
     @State private var board = Array(repeating: Array(repeating: Player.none, count: 5), count: 5)
     @State private var currentPlayer = Player.x                  //--> Current characters

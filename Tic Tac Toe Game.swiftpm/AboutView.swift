@@ -6,10 +6,7 @@
 //
 import SwiftUI
 
-
-    
-    
-struct About: View {
+struct AboutView: View {
     let instagramLink = "https://www.instagram.com/Maxime_dpj"
     let twitterLink = "https://twitter.com/max21160"
     let githubLink = "https://github.com/max21910"
@@ -17,13 +14,9 @@ struct About: View {
     @AppStorage("showanime") var showanime = true
     
     var body: some View {
-        
         NavigationView{
-            
-           
             ZStack {
-                
-                Color.black.ignoresSafeArea()
+                Color.black.ignoresSafeArea() //force the background to be black 
                 VStack {
                     Image("bigIcon")
                         .resizable()
@@ -110,9 +103,9 @@ struct About: View {
 }
 
 
-struct About_Previews: PreviewProvider {
+struct AboutView_Preview: PreviewProvider {
     static var previews: some View {
-        About()
+        AboutView()
     }
 }
 

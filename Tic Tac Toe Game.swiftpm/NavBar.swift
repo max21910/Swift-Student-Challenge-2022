@@ -24,7 +24,7 @@ struct NavBar: View {
                         .frame(width: 100, height: 50)
                     Text("Shop")
                 }
-            About()
+            AboutView()
                 .tabItem {
                     Image(systemName: "info.circle")
                     Text("About")

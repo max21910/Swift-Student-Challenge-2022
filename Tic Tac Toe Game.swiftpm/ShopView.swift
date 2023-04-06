@@ -35,6 +35,7 @@ struct ShopView: View {
     @State private var hapticoff = false
     
     let impact = UIImpactFeedbackGenerator()
+    @State var isAnimating: Bool = false
     
     
     //Itms inside the shop
@@ -105,6 +106,13 @@ struct ShopView: View {
                 VStack {
                     HStack{
                         Image(systemName: "gear")
+                            .rotationEffect(.degrees(isAnimating ? 360 : 0))
+                            .onAppear {
+                                withAnimation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false)) {
+                                    isAnimating.toggle()
+                                }
+                            }
+                
                         Text("Settings : ")
                         
                             .font(.title)
