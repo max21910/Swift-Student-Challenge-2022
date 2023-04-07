@@ -41,6 +41,7 @@ struct CoinExplanationView: View {
              
                 Text(displayedMessage)
                     .font(.subheadline)
+                    .bold()
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 20)
                     .padding(.top, 20)

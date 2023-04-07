@@ -16,6 +16,7 @@ struct Item: Identifiable {
 }
 
 
+
 struct ShopView: View {
     @AppStorage("Coins1") var Coins: Int = 1000
     @AppStorage("⬛️ Background ") var black = false

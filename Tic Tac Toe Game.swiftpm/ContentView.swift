@@ -76,6 +76,7 @@ struct ContentView: View {
                     // Display the current player
                     if ShowPlay == false {
                         Text("🎮 \(currentPlayer.rawValue)'s turn")
+                            .bold()
                             .frame(width: 250, height:50)
                             .foregroundColor(Color.green)
                             .cornerRadius(20)
@@ -83,16 +84,17 @@ struct ContentView: View {
                         HStack{
                             
                             Image(systemName: "timer")
+                                .resizable()
+                                .frame(width: 25, height: 25)
                                 .foregroundColor(.yellow)
-                                .frame(width: 30, height:70)
                             Text(String(format: "%.1f", stopWatchManager.secondsElapsed))
                                 .foregroundColor(.yellow)
                                 .font(.title)
                         }
                     }
-                    Spacer()
+    
                     HStack {
-                        NavigationLink(destination: ShopView()) {
+                      
                             Image(systemName: "dollarsign.circle.fill")
                                 .resizable()
                                 .frame(width: 30, height: 30)
@@ -101,7 +103,7 @@ struct ContentView: View {
                             Text("\(Coins)")
                                 .font(.headline)
                                 .foregroundColor(.yellow)
-                        }
+                        
                         NavigationLink(destination: CoinExplanationView()) {
                             Image(systemName: "info.circle")
                                 .resizable()
@@ -111,7 +113,7 @@ struct ContentView: View {
                     
                     // Display the board
                     if ShowPlay == false {
-                        VStack(spacing: 10) {
+                        VStack(spacing: 5) {
                             
                             ForEach(0..<3) { row in
                                 HStack(spacing: 10) {
@@ -189,14 +191,14 @@ struct ContentView: View {
                                             // Display the space with animation
                                             Rectangle()
                                                 .foregroundColor(.white)// color of the player
-                                                .frame(width: 80, height: 80)
-                                               
+                                                .frame(width: 70, height: 70)
+                                            
                                                 .cornerRadius(10)
                                                 .overlay(
                                                     Text(board[row][column].rawValue)
                                                         .font(.system(size: 48))
                                                         .foregroundColor(.black)
-                                                     
+                                                    
                                                         .opacity(board[row][column] == .none ? 0 : 1)
                                                 )
                                                 .scaleEffect(board[row][column] == .none ? 0 : 1)
@@ -206,12 +208,17 @@ struct ContentView: View {
                             }
                         }
                         
-                        .padding(20)
-                     
-                            .background(Image("grid").resizable()
-                                        .aspectRatio(contentMode: .fill))
+                       
+                        
+                        .padding(28)
+                        .background(GridView ? Image("grid")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
                             .background(Color.white.opacity(0.7))
-                           
+                            .cornerRadius(18) : nil)
+                        .background(Color.white.opacity(0.7))
+                        .cornerRadius(18)
+                        
                        
                          
                         

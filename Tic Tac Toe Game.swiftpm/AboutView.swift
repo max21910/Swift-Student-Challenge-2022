@@ -17,7 +17,7 @@ struct AboutView: View {
         NavigationView{
             ZStack {
                 Color.black.ignoresSafeArea() //force the background to be black 
-                VStack {
+                VStack(spacing: 5) {
                     Image("bigIcon")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -27,10 +27,6 @@ struct AboutView: View {
                                 Welcome.toggle()
                             }
                         }
-                    
-                       
-                    
-                    
                     Text("Developer")
                         .font(.title)
                         .fontWeight(.bold)
