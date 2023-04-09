@@ -40,7 +40,7 @@ struct ShopView: View {
     @State var isAnimating: Bool = false
     
     
-    //Itms inside the shop
+    //Items inside the shop
     let items = [
         
         Item(id: "two", name: "⬛️ Background", price: 50),
