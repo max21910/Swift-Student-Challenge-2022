@@ -10,6 +10,7 @@ struct AboutView: View {
     let instagramLink = "https://www.instagram.com/Maxime_dpj"
     let twitterLink = "https://twitter.com/max21160"
     let githubLink = "https://github.com/max21910"
+    let url = URL(string: "https://github.com/max21910/Swift-Challenge2023")!
     @State private var Welcome = false
     @AppStorage("showanime") var showanime = true
     
@@ -82,7 +83,22 @@ struct AboutView: View {
                         Image(systemName: "info.circle")
                             .resizable()
                             .frame(width: 20, height: 20)
+                        
                     }
+                    .padding(10)
+                    Button(action: {
+                               let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                               guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                     let rootViewController = windowScene.windows.first?.rootViewController else {
+                                   return
+                               }
+                               rootViewController.present(activityVC, animated: true, completion: nil)
+                           }) {
+                               HStack{
+                                   Image(systemName: "square.and.arrow.up")
+                                   Text("Share this project")
+                               }
+                           }
                 }
             }
             .navigationTitle("About")

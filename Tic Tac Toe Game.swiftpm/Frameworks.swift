@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import UIKit
+
+
 struct CardModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -31,7 +34,7 @@ struct ProductCard: View {
             
             VStack(alignment: .leading) {
                 Text(title)
-                    .font(.system(size: 25ç, weight: .bold, design: .default))
+                    .font(.system(size: 25, weight: .bold, design: .default))
                     .foregroundColor(.white)
                 Text(type)
                     .font(.system(size: 16, weight: .bold, design: .default))
@@ -71,15 +74,16 @@ struct ProductCard: View {
 
 struct Frameworks: View {
     var body: some View {
+        let url = URL(string: "https://github.com/max21910/Swift-Challenge2023")!
         NavigationView {
             VStack{
                 VStack{
                     
-                    ProductCard(image: "GithubIcon", title: "Confetti Swift UI",type: "Github Frameworks",link: "https://google.com")
+                    ProductCard(image: "GithubIcon", title: "Confetti Swift UI",type: "Github Frameworks",link: "https://github.com/simibac/ConfettiSwiftUI")
                     
-                    ProductCard(image: "GithubIcon", title: "WelcomeSheet",type: "Github Frameworks",link: "https://google.com")
+                    ProductCard(image: "GithubIcon", title: "WelcomeSheet",type: "Github Frameworks",link: "https://github.com/MAJKFL/Welcome-Sheet")
                     
-                    ProductCard(image: "GithubIcon", title: "AlertToast",type: "Github Frameworks",link: "https://google.com")
+                    ProductCard(image: "GithubIcon", title: "AlertToast",type: "Github Frameworks",link: "https://github.com/elai950/AlertToast")
                 }
                 .frame(width: 370,height: 370)
                 .background(Color(red: 32/255, green: 50/255, blue: 60/255))
@@ -92,12 +96,24 @@ struct Frameworks: View {
                         .font(.system(size: 15, weight: .bold, design: .default))
                         .foregroundColor(.white)
                         .padding(10)
-                    Text("Made by Ma21910 in 🇫🇷 with ❤️")
+                    Text("Made by Max21910 in 🇫🇷 with ❤️")
                         .font(.system(size: 15, weight: .bold, design: .default))
                         .foregroundColor(.white)
-                    
-                    
-                }
+                        .padding(10)
+                    Button(action: {
+                               let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                               guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                     let rootViewController = windowScene.windows.first?.rootViewController else {
+                                   return
+                               }
+                               rootViewController.present(activityVC, animated: true, completion: nil)
+                           }) {
+                               HStack{
+                                   Image(systemName: "square.and.arrow.up")
+                                   Text("Share this project")
+                               }
+                           }
+                       }
                 .frame(width: 370,height: 120)
                 .background(Color(red: 32/255, green: 50/255, blue: 60/255))
                 .modifier(CardModifier())
