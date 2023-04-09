@@ -309,6 +309,7 @@ struct ContentView: View {
                 }
             }
                 .navigationBarTitle("Tic Tac Toe")
+               
             }
             
             

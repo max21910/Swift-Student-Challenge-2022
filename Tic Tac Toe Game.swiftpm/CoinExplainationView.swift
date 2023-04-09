@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-import Combine
+
+
 struct CoinExplanationView: View {
     @State private var CoinsAnimation = false
     let message = "In Tic Tac Toe, virtual coins are used as a currency that can be earned by winning games. These coins can then be used to purchase animations and background colors in the item Shops."
@@ -17,11 +18,10 @@ struct CoinExplanationView: View {
     var body: some View {
         NavigationView{
             VStack {
-                Text("Virtual Coins")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 10)
                 
+                Text("Virtual Coins")
+                    .font(.largeTitle)
+                    .fontWeight(.bold).shiny(.iridescent)
                 Image(systemName: "dollarsign.circle.fill")
                     .resizable()
                     .scaledToFit()
@@ -40,8 +40,8 @@ struct CoinExplanationView: View {
                 
              
                 Text(displayedMessage)
-                    .font(.subheadline)
                     .bold()
+                    .fontWeight(.bold).shiny()
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 20)
                     .padding(.top, 20)
@@ -57,6 +57,9 @@ struct CoinExplanationView: View {
                         }
                     }
                 Spacer()
+                Text("Move your iphone to see magical effect :)")
+                    .font(.caption)
+                    .fontWeight(.bold).shiny(.iridescent)
             }
         }
     }

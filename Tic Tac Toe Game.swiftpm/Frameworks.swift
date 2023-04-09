@@ -64,7 +64,7 @@ struct ProductCard: View {
             }.padding(.trailing, 20)
             Spacer()
         }
-        .frame(width: 340,height: 100)
+        .frame(width: 320,height: 100)
         .background(Color(red: 32/255, green: 36/255, blue: 38/255))
         .modifier(CardModifier())
         .padding(.all, 5)
@@ -84,46 +84,20 @@ struct Frameworks: View {
                     ProductCard(image: "GithubIcon", title: "WelcomeSheet",type: "Github Frameworks",link: "https://github.com/MAJKFL/Welcome-Sheet")
                     
                     ProductCard(image: "GithubIcon", title: "AlertToast",type: "Github Frameworks",link: "https://github.com/elai950/AlertToast")
+                    ProductCard(image: "GithubIcon", title: "Shiny",type: "Github Frameworks",link: " https://github.com/maustinstar/shiny")
+               
                 }
-                .frame(width: 370,height: 370)
+                .frame(width: 360,height: 470)
                 .background(Color(red: 32/255, green: 50/255, blue: 60/255))
                 .modifier(CardModifier())
                 .padding(.all, 5)
                 .cornerRadius(15)
                 
-                VStack{
-                    Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
-                        .font(.system(size: 15, weight: .bold, design: .default))
-                        .foregroundColor(.white)
-                        .padding(10)
-                    Text("Made by Max21910 in 🇫🇷 with ❤️")
-                        .font(.system(size: 15, weight: .bold, design: .default))
-                        .foregroundColor(.white)
-                        .padding(10)
-                    Button(action: {
-                               let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-                               guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                                     let rootViewController = windowScene.windows.first?.rootViewController else {
-                                   return
-                               }
-                               rootViewController.present(activityVC, animated: true, completion: nil)
-                           }) {
-                               HStack{
-                                   Image(systemName: "square.and.arrow.up")
-                                   Text("Share this project")
-                               }
-                           }
-                       }
-                .frame(width: 370,height: 120)
-                .background(Color(red: 32/255, green: 50/255, blue: 60/255))
-                .modifier(CardModifier())
-                .padding(.all, 5)
-                .cornerRadius(15)
                 
                 
             }
           
-            .navigationTitle("Frameworks")
+           Spacer()
         }
     }
 }

@@ -24,9 +24,9 @@ struct AboutView: View {
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
                         .onAppear {
-                            if showanime == true { //if this is the first time show the animation should be true
+                          //  if showanime == true { //if this is the first time show the animation should be true
                                 Welcome.toggle()
-                            }
+                           // }
                         }
                     Text("Developer")
                         .font(.title)
@@ -94,11 +94,39 @@ struct AboutView: View {
                                }
                                rootViewController.present(activityVC, animated: true, completion: nil)
                            }) {
-                               HStack{
-                                   Image(systemName: "square.and.arrow.up")
-                                   Text("Share this project")
-                               }
+                               VStack{
+                                   Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
+                                       
+                                       .padding(10)
+                                   Text("Made by Max21910 in 🇫🇷 with ❤️")
+                                     
+                                       .fontWeight(.bold)
+                                       .padding(10)
+                                   Button(action: {
+                                              let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                                              guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                                    let rootViewController = windowScene.windows.first?.rootViewController else {
+                                                  return
+                                              }
+                                              rootViewController.present(activityVC, animated: true, completion: nil)
+                                          }) {
+                                              HStack{
+                                                  Image(systemName: "square.and.arrow.up")
+                                                  Text("Share this project")
+                                                      
+                                              }
+                                          
+                                          }
+                                      }
+                               .frame(width: 370,height: 140)
+                               .background(Color(red: 32/255, green: 36/255, blue: 38/255))
+                               .modifier(CardModifier())
+                               .padding(.all, 5)
+                               .cornerRadius(15)
+                               
+                               
                            }
+                           
                 }
             }
             .navigationTitle("About")
