@@ -25,7 +25,7 @@ struct ProductCard: View {
     var link: String
     
     var body: some View {
-        Color.black.ignoresSafeArea()
+     
         HStack(alignment: .center) {
             Image(image)
                 .resizable()
@@ -74,9 +74,12 @@ struct ProductCard: View {
 }
 
 struct Frameworks: View {
+  
     var body: some View {
-        let url = URL(string: "https://github.com/max21910/Swift-Challenge2023")!
+      
+       
         NavigationView {
+         
             VStack{
                 VStack{
                     
@@ -85,7 +88,7 @@ struct Frameworks: View {
                     ProductCard(image: "GithubIcon", title: "WelcomeSheet",type: "Github Frameworks",link: "https://github.com/MAJKFL/Welcome-Sheet")
                     
                     ProductCard(image: "GithubIcon", title: "AlertToast",type: "Github Frameworks",link: "https://github.com/elai950/AlertToast")
-                    ProductCard(image: "GithubIcon", title: "Shiny",type: "Github Frameworks",link: " https://github.com/maustinstar/shiny")
+                    ProductCard(image: "GithubIcon", title: "Shiny",type: "Github Frameworks",link: "https://github.com/maustinstar/shiny")
                
                 }
                 .frame(width: 360,height: 470)
