@@ -25,6 +25,7 @@ struct ProductCard: View {
     var link: String
     
     var body: some View {
+        Color.black.ignoresSafeArea()
         HStack(alignment: .center) {
             Image(image)
                 .resizable()

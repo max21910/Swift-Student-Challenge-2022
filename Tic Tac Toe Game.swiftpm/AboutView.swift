@@ -99,7 +99,7 @@ struct AboutView: View {
                                        
                                        .padding(10)
                                    Text("Made by Max21910 in 🇫🇷 with ❤️")
-                                     
+                                       .foregroundColor(Color.white)
                                        .fontWeight(.bold)
                                        .padding(10)
                                    Button(action: {
