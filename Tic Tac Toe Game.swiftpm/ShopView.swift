@@ -60,7 +60,9 @@ struct ShopView: View {
                             .resizable()
                             .frame(width: 20, height: 20)
                     }
+                  
                     Spacer()
+                   
                 }
                 .padding(.horizontal, 20)
                 List(items) { item in

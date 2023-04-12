@@ -24,6 +24,13 @@ struct NavBar: View {
                         .frame(width: 100, height: 50)
                     Text("Shop")
                 }
+            GiftView()
+                .tabItem {
+                    Image(systemName: "gift.fill")
+                        .resizable()
+                        .frame(width: 100, height: 50)
+                    Text("Gift")
+                }
             AboutView()
                 .tabItem {
                     Image(systemName: "info.circle")

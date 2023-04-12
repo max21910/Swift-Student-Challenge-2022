@@ -11,20 +11,21 @@ struct AboutView: View {
     let twitterLink = "https://twitter.com/max21160"
     let githubLink = "https://github.com/max21910"
     let url = URL(string: "https://github.com/max21910/Swift-Challenge2023")!
+    
     @State private var Welcome = false
     @AppStorage("showanime") var showanime = true
     
     var body: some View {
         NavigationView{
             ZStack {
-                Color.black.ignoresSafeArea() //force the background to be black 
+                Color.black.ignoresSafeArea() //force the background to be black
                 VStack(spacing: 5) {
                     Image("bigIcon")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
                         .onAppear {
-                          if showanime == true { //if this is the first time show the animation should be true
+                            if showanime == true { //if this is the first time show the animation
                                 Welcome.toggle()
                             }
                         }
@@ -87,46 +88,46 @@ struct AboutView: View {
                     }
                     .padding(10)
                     Button(action: {
-                               let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-                               guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                                     let rootViewController = windowScene.windows.first?.rootViewController else {
-                                   return
-                               }
-                               rootViewController.present(activityVC, animated: true, completion: nil)
-                           }) {
-                               VStack{
-                                   Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
-                                       
-                                       .padding(10)
-                                   Text("Made by Max21910 in 🇫🇷 with ❤️")
-                                       .foregroundColor(Color.white)
-                                       .fontWeight(.bold)
-                                       .padding(10)
-                                   Button(action: {
-                                              let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-                                              guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                                                    let rootViewController = windowScene.windows.first?.rootViewController else {
-                                                  return
-                                              }
-                                              rootViewController.present(activityVC, animated: true, completion: nil)
-                                          }) {
-                                              HStack{
-                                                  Image(systemName: "square.and.arrow.up")
-                                                  Text("Share this project")
-                                                      
-                                              }
-                                          
-                                          }
-                                      }
-                               .frame(width: 370,height: 140)
-                               .background(Color(red: 32/255, green: 36/255, blue: 38/255))
-                               .modifier(CardModifier())
-                               .padding(.all, 5)
-                               .cornerRadius(15)
-                               
-                               
-                           }
-                           
+                        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                              let rootViewController = windowScene.windows.first?.rootViewController else {
+                            return
+                        }
+                        rootViewController.present(activityVC, animated: true, completion: nil)
+                    }) {
+                        VStack{
+                            Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
+                            
+                                .padding(10)
+                            Text("Made by Max21910 in 🇫🇷 with ❤️")
+                                .foregroundColor(Color.white)
+                                .fontWeight(.bold)
+                                .padding(10)
+                            Button(action: {
+                                let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                      let rootViewController = windowScene.windows.first?.rootViewController else {
+                                    return
+                                }
+                                rootViewController.present(activityVC, animated: true, completion: nil)
+                            }) {
+                                HStack{
+                                    Image(systemName: "square.and.arrow.up")
+                                    Text("Share this project")
+                                    
+                                }
+                                
+                            }
+                        }
+                        .frame(width: 370,height: 140)
+                        .background(Color(red: 32/255, green: 36/255, blue: 38/255))
+                        .modifier(CardModifier())
+                        .padding(.all, 5)
+                        .cornerRadius(15)
+                        
+                        
+                    }
+                    
                 }
             }
             .navigationTitle("About")
@@ -136,7 +137,8 @@ struct AboutView: View {
             // `.alert` is the default displayMode
             AlertToast(displayMode: .banner(.pop),type: .systemImage("person.line.dotted.person.fill", Color.blue), title: "Thanks for Use my App!", subTitle: "Maxime Jourdan - Developer")
         } completion: {
-           //Completion block after dismiss
+            //Completion block after dismiss
+            print("alert AboutView dissmis")
             showanime = false //make sure to show only 1 time the greeting animation
         }
     }

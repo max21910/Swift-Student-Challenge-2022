@@ -5,7 +5,7 @@
 //  Created by Max  on 02/04/2023.
 //
 // this file containes the logics behin the chronometre of the game with all the function
-import Foundation
+
 import SwiftUI
 
 class StopWatchLogic: ObservableObject {

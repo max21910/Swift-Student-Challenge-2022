@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
-import UIKit
-
 
 struct CardModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .cornerRadius(20)
             .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
+        
     }
     
 }
@@ -25,15 +24,15 @@ struct ProductCard: View {
     var link: String
     
     var body: some View {
-     
+        
         HStack(alignment: .center) {
             Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 70, height: 60)
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                            .shadow(radius: 7)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                .shadow(radius: 7)
             
             VStack(alignment: .leading) {
                 Text(title)
@@ -51,20 +50,15 @@ struct ProductCard: View {
                         Text("Github Link")
                             .font(.system(size: 16, weight: .bold, design: .default))
                             .foregroundColor(.blue)
-                    Image("GithubIcon")
+                        Image("GithubIcon")
                             .resizable()
                             .frame(width: 20,height: 20)
                             .padding(5)
                         
                     })
-                    
-                    
-                    
-                    
-                    
-                        .font(.system(size: 16, weight: .bold, design: .default))
-                        .foregroundColor(.white)
-                        .padding(.top, 8)
+                    .font(.system(size: 16, weight: .bold, design: .default))
+                    .foregroundColor(.white)
+                    .padding(.top, 8)
                 }
             }.padding(.trailing, 20)
             Spacer()
@@ -78,12 +72,12 @@ struct ProductCard: View {
 }
 
 struct Frameworks: View {
-  
+    
     var body: some View {
-      
-       
+        
+        
         NavigationView {
-         
+            
             VStack{
                 VStack{
                     
@@ -93,7 +87,7 @@ struct Frameworks: View {
                     
                     ProductCard(image: "AlertToast", title: "AlertToast",type: "Alert Animation",link: "https://github.com/elai950/AlertToast")
                     ProductCard(image: "shiny", title: "Shiny",type: "Shiny Animated Text",link: "https://github.com/maustinstar/shiny")
-               
+                    
                 }
                 .frame(width: 360,height: 600)
                 .background(Color(red: 32/255, green: 50/255, blue: 60/255))
@@ -104,8 +98,8 @@ struct Frameworks: View {
                 
                 
             }
-          
-           Spacer()
+            
+            Spacer()
         }
         .navigationTitle("Frameworks")
     }

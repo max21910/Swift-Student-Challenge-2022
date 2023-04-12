@@ -12,7 +12,8 @@ struct CoinExplanationView: View {
     @State private var CoinsAnimation = false
     let message = "In Tic Tac Toe, virtual coins are used as a currency that can be earned by winning games. These coins can then be used to purchase animations and background colors in the item Shops."
     @State private var displayedMessage = ""
-   
+    
+    
     
     
     var body: some View {
@@ -34,11 +35,11 @@ struct CoinExplanationView: View {
                     .onAppear {
                         withAnimation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true)) {
                             CoinsAnimation.toggle()
-                          
+                            
                         }
                     }
                 
-             
+                
                 Text(displayedMessage)
                     .bold()
                     .fontWeight(.bold).shiny()
@@ -46,16 +47,17 @@ struct CoinExplanationView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 20)
                     .onAppear {
-                                    var timer: Timer?
-                                    timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-                                        if displayedMessage.count < message.count {
-                                            displayedMessage += String(message[message.index(message.startIndex, offsetBy: displayedMessage.count)])
-                                        } else {
-                                            timer?.invalidate()
-                                            timer = nil
-                                        }
+                        var timer: Timer?
+                        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+                            if displayedMessage.count < message.count {
+                                displayedMessage += String(message[message.index(message.startIndex, offsetBy: displayedMessage.count)])
+                            } else {
+                                timer?.invalidate()
+                                timer = nil
+                            }
                         }
                     }
+                
                 Spacer()
                 Text("Move your iphone to see magical effect :)")
                     .font(.caption)
@@ -64,7 +66,6 @@ struct CoinExplanationView: View {
         }
     }
 }
-        
 
 
 

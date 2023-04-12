@@ -73,7 +73,7 @@ internal struct ShinyView<Content>: View where Content: View {
                         endRadius: self.radius(proxy))
                         .scaleEffect(self.scale(proxy))
                         .offset(self.position)
-                        .animation(.default)
+                       
                 }
                 .mask(self.content)
             })
