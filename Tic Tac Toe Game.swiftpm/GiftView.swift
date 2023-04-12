@@ -42,12 +42,12 @@ struct GiftView: View {
                             Image(systemName: "gift.fill")
                                 .padding()
                             Text("Claim Gift")
-                                .fontWeight(.semibold)
-                                .font(.title)
+                                .bold()
+                              
                             
                             
                         }
-                        .frame(width: 190,height: 20)
+                        .frame(width: 170,height: 20)
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.white)
@@ -65,9 +65,14 @@ struct GiftView: View {
                                     logoRotation = 360
                                 }
                             }
+                        
                         Text("Gift claimed, come back in 3 hours.")
                             .bold()
+                            .padding()
                     }
+                        Text("Note: every gift give you 50 coins")
+                            .bold()
+                    
                     
                     
                     .onAppear(perform: {
