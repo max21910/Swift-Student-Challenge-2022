@@ -25,7 +25,6 @@ struct ShopView: View {
     @AppStorage("vibration ") var vibration = true
     @AppStorage("numberobjects") var numberobjects = 0
     @AppStorage("GridView") var GridView = true
-    @State private var animcomplet = 0
     @State private var devoption = false
     @State private var Completepurchase = false
     @State private var Errorpurshase = false
@@ -46,24 +45,24 @@ struct ShopView: View {
     ]
     
     var body: some View {
-            NavigationView {
-                VStack {
-                    HStack {
-                        NavigationLink(destination: CoinExplanationView()) {
-                            Image(systemName: "dollarsign.circle.fill")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(.yellow)
-                            Text("\(Coins)")
-                                .font(.headline)
-                                .foregroundColor(.yellow)
-                            Image(systemName: "info.circle")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                        }
-                        Spacer()
+        NavigationView {
+            VStack {
+                HStack {
+                    NavigationLink(destination: CoinExplanationView()) {
+                        Image(systemName: "dollarsign.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.yellow)
+                        Text("\(Coins)")
+                            .font(.headline)
+                            .foregroundColor(.yellow)
+                        Image(systemName: "info.circle")
+                            .resizable()
+                            .frame(width: 20, height: 20)
                     }
-                    .padding(.horizontal, 20)
+                    Spacer()
+                }
+                .padding(.horizontal, 20)
                 List(items) { item in
                     HStack {
                         Text(item.name)
@@ -72,54 +71,54 @@ struct ShopView: View {
                             Image(systemName: "checkmark")
                                 .foregroundColor(.green)
                         } else {
-                      
-                                
-                                Text("\(item.price) Coins")
-                                    .foregroundColor(.yellow)
-                                
-                       
                             
-                                Button(action: {
-                                    if item.price <= Coins {
-                                        withAnimation {
-                                            Coins -= item.price
-                                            markItemAsPurchased(item)
-                                            Completepurchase.toggle()
-                                            if vibration == true {
-                                                impact.impactOccurred()
-                                            }
+                            
+                            Text("\(item.price) Coins")
+                                .foregroundColor(.yellow)
+                            
+                            
+                            
+                            Button(action: {
+                                if item.price <= Coins {
+                                    withAnimation {
+                                        Coins -= item.price
+                                        markItemAsPurchased(item)
+                                        Completepurchase.toggle()
+                                        if vibration == true {
+                                            impact.impactOccurred()
                                         }
+                                    }
+                                    
+                                } else {
+                                    withAnimation {
                                         
-                                    } else {
-                                        withAnimation {
-                                            
-                                            Errorpurshase.toggle()
-                                            if vibration == true {
-                                                impact.impactOccurred()
-                                            }
+                                        Errorpurshase.toggle()
+                                        if vibration == true {
+                                            impact.impactOccurred()
                                         }
                                     }
-                                    
-                                    
-                                    
-                                }){
-                                    HStack {
-                                        Spacer()
-                                        Text("Buy")
-                                            .foregroundColor(.blue)
-                                            .padding(.horizontal, 12)
-                                            .padding(.vertical, 8)
-                                            .background(Color.blue.opacity(0.2))
-                                            .clipShape(Capsule())
-                                    }
-                                    .buttonStyle(PlainButtonStyle())
                                 }
                                 
+                                
+                                
+                            }){
+                                HStack {
+                                    Spacer()
+                                    Text("Buy")
+                                        .foregroundColor(.blue)
+                                        .padding(.horizontal, 12)
+                                        .padding(.vertical, 8)
+                                        .background(Color.blue.opacity(0.2))
+                                        .clipShape(Capsule())
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                            
                             
                         }
                     }
                 }
-                    Text("You own \(numberobjects) /4 objects")
+                Text("You own \(numberobjects) /4 objects")
                 VStack {
                     HStack{
                         Image(systemName: "gear")
@@ -129,21 +128,21 @@ struct ShopView: View {
                                     isAnimating.toggle()
                                 }
                             }
-                
+                        
                         Text("Settings : ")
-                        .font(.title)
+                            .font(.title)
                             .bold()
                     }
-                        Toggle(isOn: $vibration) {
-                           
-                            HStack{
-                                Image(systemName: "iphone.gen3.radiowaves.left.and.right")
-                                   
-                                   
-                                Text("Haptic Feedback")
-                            }
+                    Toggle(isOn: $vibration) {
+                        
+                        HStack{
+                            Image(systemName: "iphone.gen3.radiowaves.left.and.right")
+                            
+                            
+                            Text("Haptic Feedback")
                         }
-                 
+                    }
+                    
                     Toggle(isOn: $GridView) {
                         Text("Enable Grid ")
                     }
@@ -244,14 +243,14 @@ struct ShopView: View {
                 
                 Spacer() // Ajout du Spacer
                 //animation if insufficientCoins is true
-                    if numberobjects == 4 {
-                        Text("Congratulation ! 👑 You own everythings")
-                        //code for own everythings
-                    }
-                  
+                if numberobjects == 4 {
+                    Text("Congratulation ! 👑 You own everythings")
+                    //code for own everythings
+                }
                 
-              
-  
+                
+                
+                
             }
             .navigationTitle("Shop") //title of the pages
             
@@ -270,10 +269,6 @@ struct ShopView: View {
             AlertToast(type: .error(.red), title: "Error occur", subTitle: "Not enough Coins")
             
         }
-        .confettiCannon(counter: $animcomplet, repetitions: 3, repetitionInterval: 0.7)
-        
-        
-        
         
     }
     

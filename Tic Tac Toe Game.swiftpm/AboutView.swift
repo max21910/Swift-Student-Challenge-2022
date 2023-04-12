@@ -24,9 +24,9 @@ struct AboutView: View {
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
                         .onAppear {
-                          //  if showanime == true { //if this is the first time show the animation should be true
+                          if showanime == true { //if this is the first time show the animation should be true
                                 Welcome.toggle()
-                           // }
+                            }
                         }
                     Text("Developer")
                         .font(.title)

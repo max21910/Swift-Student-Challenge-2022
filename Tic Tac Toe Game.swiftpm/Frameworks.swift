@@ -30,8 +30,10 @@ struct ProductCard: View {
             Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 50)
-                .padding(.all, 20)
+                .frame(width: 70, height: 60)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                            .shadow(radius: 7)
             
             VStack(alignment: .leading) {
                 Text(title)
@@ -49,7 +51,9 @@ struct ProductCard: View {
                         Text("Github Link")
                             .font(.system(size: 16, weight: .bold, design: .default))
                             .foregroundColor(.blue)
-                        Image(systemName: "link.circle.fill")
+                    Image("GithubIcon")
+                            .resizable()
+                            .frame(width: 20,height: 20)
                             .padding(5)
                         
                     })
@@ -83,15 +87,15 @@ struct Frameworks: View {
             VStack{
                 VStack{
                     
-                    ProductCard(image: "GithubIcon", title: "Confetti Swift UI",type: "Github Frameworks",link: "https://github.com/simibac/ConfettiSwiftUI")
+                    ProductCard(image: "confetti", title: "Confetti Swift UI",type: "Confetti Animation",link: "https://github.com/simibac/ConfettiSwiftUI")
                     
-                    ProductCard(image: "GithubIcon", title: "WelcomeSheet",type: "Github Frameworks",link: "https://github.com/MAJKFL/Welcome-Sheet")
+                    ProductCard(image: "WelcomeSheetBanner", title: "WelcomeSheet",type: "Welcome Sheet",link: "https://github.com/MAJKFL/Welcome-Sheet")
                     
-                    ProductCard(image: "GithubIcon", title: "AlertToast",type: "Github Frameworks",link: "https://github.com/elai950/AlertToast")
-                    ProductCard(image: "GithubIcon", title: "Shiny",type: "Github Frameworks",link: "https://github.com/maustinstar/shiny")
+                    ProductCard(image: "AlertToast", title: "AlertToast",type: "Alert Animation",link: "https://github.com/elai950/AlertToast")
+                    ProductCard(image: "shiny", title: "Shiny",type: "Shiny Animated Text",link: "https://github.com/maustinstar/shiny")
                
                 }
-                .frame(width: 360,height: 470)
+                .frame(width: 360,height: 600)
                 .background(Color(red: 32/255, green: 50/255, blue: 60/255))
                 .modifier(CardModifier())
                 .padding(.all, 5)
@@ -103,7 +107,9 @@ struct Frameworks: View {
           
            Spacer()
         }
+        .navigationTitle("Frameworks")
     }
+    
 }
 
 struct Frameworks_Previews: PreviewProvider {
