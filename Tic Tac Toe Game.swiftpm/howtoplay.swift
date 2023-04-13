@@ -11,7 +11,7 @@ struct Howtoplay: View {
    @State private var showSheet = false
     let impact = UIImpactFeedbackGenerator() //set vibration
     @AppStorage("vibration ") var vibration = true
-    
+
     let pages = [
         WelcomeSheetPage(title: "Welcome to Tic tac toe ", rows: [
             WelcomeSheetPageRow(imageSystemName:"person.2.circle.fill",

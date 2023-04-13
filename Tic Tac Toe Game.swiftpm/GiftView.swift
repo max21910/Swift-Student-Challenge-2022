@@ -12,6 +12,8 @@ struct GiftView: View {
     @AppStorage("Coins1") var Coins: Int = 1000
     @State private var coinanimation = false
     @State private var logoRotation: Double = 0
+    let impact = UIImpactFeedbackGenerator() //set vibration
+    @AppStorage("vibration ") var vibration = true
     var body: some View {
         
         NavigationView {
@@ -34,6 +36,9 @@ struct GiftView: View {
                 Spacer()
                 if canClaimGift {
                     Button(action: {
+                        if vibration == true {
+                            impact.impactOccurred()
+                        }
                         Coins = Coins + 50
                         coinanimation.toggle()
                         claimGift()

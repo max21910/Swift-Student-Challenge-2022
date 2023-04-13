@@ -74,6 +74,7 @@ internal struct ShinyView<Content>: View where Content: View {
                         .scaleEffect(self.scale(proxy))
                         .offset(self.position)
                        
+                    
                 }
                 .mask(self.content)
             })

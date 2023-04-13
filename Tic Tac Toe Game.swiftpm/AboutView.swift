@@ -11,7 +11,8 @@ struct AboutView: View {
     let twitterLink = "https://twitter.com/max21160"
     let githubLink = "https://github.com/max21910"
     let url = URL(string: "https://github.com/max21910/Swift-Challenge2023")!
-    
+    let impact = UIImpactFeedbackGenerator() //set vibration
+    @AppStorage("vibration ") var vibration = true
     @State private var Welcome = false
     @AppStorage("showanime") var showanime = true
     
@@ -43,6 +44,9 @@ struct AboutView: View {
                     
                     HStack {
                         Button(action: {
+                            if vibration == true {
+                                impact.impactOccurred()
+                            }
                             guard let url = URL(string: instagramLink) else { return }
                             UIApplication.shared.open(url)
                         }) {
@@ -56,6 +60,9 @@ struct AboutView: View {
                         }
                         
                         Button(action: {
+                            if vibration == true {
+                                impact.impactOccurred()
+                            }
                             guard let url = URL(string: twitterLink) else { return }
                             UIApplication.shared.open(url)
                         }) {
@@ -68,6 +75,9 @@ struct AboutView: View {
                         }
                         
                         Button(action: {
+                            if vibration == true {
+                                impact.impactOccurred()
+                            }
                             guard let url = URL(string: githubLink) else { return }
                             UIApplication.shared.open(url)
                         }) {
@@ -88,6 +98,9 @@ struct AboutView: View {
                     }
                     .padding(10)
                     Button(action: {
+                        if vibration == true {
+                            impact.impactOccurred()
+                        }
                         let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
                         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                               let rootViewController = windowScene.windows.first?.rootViewController else {
@@ -104,6 +117,9 @@ struct AboutView: View {
                                 .fontWeight(.bold)
                                 .padding(10)
                             Button(action: {
+                                if vibration == true {
+                                    impact.impactOccurred()
+                                }
                                 let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
                                 guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                                       let rootViewController = windowScene.windows.first?.rootViewController else {

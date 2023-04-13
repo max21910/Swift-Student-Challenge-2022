@@ -12,8 +12,8 @@ struct CoinExplanationView: View {
     @State private var CoinsAnimation = false
     let message = "In Tic Tac Toe, virtual coins are used as a currency that can be earned by winning games. These coins can then be used to purchase animations and background colors in the item Shops."
     @State private var displayedMessage = ""
-    
-    
+    let impact = UIImpactFeedbackGenerator() //set vibration
+    @AppStorage("vibration ") var vibration = true
     
     
     var body: some View {

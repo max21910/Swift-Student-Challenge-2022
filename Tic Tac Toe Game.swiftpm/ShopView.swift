@@ -29,7 +29,7 @@ struct ShopView: View {
     @State private var Completepurchase = false
     @State private var Errorpurshase = false
     @State private var hapticon = false
-    @State private var hapticoff = false
+   
     
     let impact = UIImpactFeedbackGenerator()
     @State var isAnimating: Bool = false

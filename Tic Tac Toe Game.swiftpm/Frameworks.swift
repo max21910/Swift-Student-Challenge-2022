@@ -22,7 +22,8 @@ struct ProductCard: View {
     var title: String
     var type: String
     var link: String
-    
+    @AppStorage("vibration ") var vibration = true
+    let impact = UIImpactFeedbackGenerator()
     var body: some View {
         
         HStack(alignment: .center) {
@@ -43,6 +44,9 @@ struct ProductCard: View {
                     .foregroundColor(.gray)
                 HStack {
                     Button(action: {
+                        if vibration == true {
+                            impact.impactOccurred()
+                        }
                         guard let url = URL(string: link) else { return }
                         UIApplication.shared.open(url)
                         
@@ -72,7 +76,7 @@ struct ProductCard: View {
 }
 
 struct Frameworks: View {
-    
+    let impact = UIImpactFeedbackGenerator() //set vibration
     var body: some View {
         
         
