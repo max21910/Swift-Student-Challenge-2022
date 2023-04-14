@@ -31,9 +31,13 @@ struct GiftView: View {
                     
                     
                     Spacer()
+                    Image(systemName: "gift")
+                        .resizable()
+                        .frame(width: 30,height: 30)
                     
                 }
                 Spacer()
+               
                 if canClaimGift {
                     Button(action: {
                         if vibration == true {
@@ -43,7 +47,9 @@ struct GiftView: View {
                         coinanimation.toggle()
                         claimGift()
                     }) {
+                       
                         HStack{
+                            
                             Image(systemName: "gift.fill")
                                 .padding()
                             Text("Claim Gift")

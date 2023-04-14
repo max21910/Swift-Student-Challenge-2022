@@ -18,7 +18,7 @@ let package = Package(
             targets: ["AppModule"],
             bundleIdentifier: "com.max21160.Emojie-Speed-Games",
             teamIdentifier: "JBDCCGS2V3",
-            displayVersion: "3.0",
+            displayVersion: "4.0",
             bundleVersion: "1",
             appIcon: .asset("AppIcon"),
             accentColor: .presetColor(.pink),

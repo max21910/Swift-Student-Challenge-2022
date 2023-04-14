@@ -15,7 +15,9 @@ struct AboutView: View {
     @AppStorage("vibration ") var vibration = true
     @State private var Welcome = false
     @AppStorage("showanime") var showanime = true
-    
+    @State private var easteregg = false
+    @State private var count = 0
+ 
     var body: some View {
         NavigationView{
             ZStack {
@@ -30,6 +32,14 @@ struct AboutView: View {
                                 Welcome.toggle()
                             }
                         }
+                        .onTapGesture {
+                            count = count + 1
+                            if count == 10 {
+                                easteregg.toggle()
+                                count = 0
+                            }
+                        }
+                  
                     Text("Developer")
                         .font(.title)
                         .fontWeight(.bold)
@@ -157,7 +167,18 @@ struct AboutView: View {
             print("alert AboutView dissmis")
             showanime = false //make sure to show only 1 time the greeting animation
         }
+        .toast(isPresenting: $easteregg, duration: 10) {
+            
+            // `.alert` is the default displayMode
+            AlertToast(displayMode: .banner(.pop),type: .systemImage("person.line.dotted.person.fill", Color.blue), title: "Easter egg !! 🥚this is my favorite quote : ", subTitle: "Steve Jobs once said, “Give people wonderful tools, and they'll do wonderful things”.")
+        } completion: {
+            //Completion block after dismiss
+            print("alert AboutView dissmis")
+            showanime = false //make sure to show only 1 time the greeting animation
+        }
+       
     }
+   
 }
 
 
