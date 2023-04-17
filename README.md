@@ -15,6 +15,12 @@ Welcome-Sheet: https://github.com/MAJKFL/Welcome-Sheet.
 ConfettiSwiftUI: https://github.com/simibac/ConfettiSwiftUI. 
 
 
+AlertToast: https://github.com/elai950/AlertToast
+
+
+Shiny: https://github.com/maustinstar/shiny
+
+
 # Support :
 📱 works from iOS 14 (older iOS not tested may work ) to iOS 16 
 
