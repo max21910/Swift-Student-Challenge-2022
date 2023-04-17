@@ -44,4 +44,6 @@ commming soon
 ![Screenshot](img/5.jpeg)
 ![Screenshot](img/6.jpeg)
 ![Screenshot](img/7.jpeg)
+![Screenshot](img/8.jpeg)
+![Screenshot](img/9.jpeg)
 ![Screenshot](img/banner.png)
