@@ -36,7 +36,7 @@ My 2023 swift challenge participation
 ## Free to use ?
 yes this project is open source (please do not use this as a participation project for the 2023 swift challenge)
 ## Image ?
-commming soon 
+
 ![Screenshot](img/1.jpeg)
 ![Screenshot](img/2.jpeg)
 ![Screenshot](img/3.jpeg)
