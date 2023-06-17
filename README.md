@@ -52,8 +52,7 @@ yes this project is open source (please do not use this as a participation proje
  N'hésitez pas à contribuer au projet en soumettant des pull requests ou en signalant des problèmes. Toute contribution est la bienvenue !
 
 
-## ⚠️ Note :
-every 12 pm the bot automaticly send message in the specify chanel id 
+
 <h3 align="left">Connect with me:</h3>
 <p align="left">
 <a href="https://twitter.com/max21160" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="max21160" height="30" width="40" /></a>
